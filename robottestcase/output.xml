@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.0 on win32)" generated="2026-05-21T11:21:05.976538" rpa="false" schemaversion="5">
+<suite id="s1" name="Hrmslogin" source="C:\Users\Lokesh\Desktop\Robotic Framework Python\robottestcase\hrmslogin.robot">
+<test id="s1-t1" name="LoginTest" line="9">
+<kw name="LoginToHRMS">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-21T11:21:06.158815" level="INFO">Opening browser 'chrome' to base url 'https://hrms.tringapps.net/login/?next=/'.</msg>
+<arg>${hrms_url}</arg>
+<arg>${webdriver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-21T11:21:06.158815" elapsed="2.389962"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-21T11:21:08.548777" level="INFO">Typing text 'lokesh.jothiram@tringapps.net' into text field 'id:username'.</msg>
+<arg>id:username</arg>
+<arg>lokesh.jothiram@tringapps.net</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-21T11:21:08.548777" elapsed="0.158577"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-21T11:21:08.707354" level="INFO">Typing text 'Qwertypad@123' into text field 'id:password'.</msg>
+<arg>id:password</arg>
+<arg>Qwertypad@123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-21T11:21:08.707354" elapsed="0.129857"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-21T11:21:08.838284" level="INFO">Clicking element 'xpath:/html/body/div[1]/main/div[1]/form/button'.</msg>
+<arg>xpath:/html/body/div[1]/main/div[1]/form/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-21T11:21:08.837211" elapsed="3.095203"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-21T11:21:11.933442" elapsed="2.279576"/>
+</kw>
+<status status="PASS" start="2026-05-21T11:21:06.158815" elapsed="8.054203"/>
+</kw>
+<status status="PASS" start="2026-05-21T11:21:06.157475" elapsed="8.056516"/>
+</test>
+<status status="PASS" start="2026-05-21T11:21:05.978542" elapsed="8.235449"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Hrmslogin" id="s1" pass="1" fail="0" skip="0">Hrmslogin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,17 @@
+1779341387317	geckodriver	INFO	Listening on 127.0.0.1:52550
+1779341390409	mozrunner::runner	INFO	Running command: "C:\\Users\\Lokesh\\.cache\\selenium\\firefox\\win64\\151.0\\firefox.exe" "--marionette" "--remote-debugging ... " "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Lokesh\\AppData\\Local\\Temp\\rust_mozprofilemg2FlO"
+Dynamically enable window occlusion 0
+1779341391201	Marionette	INFO	Marionette enabled
+1779341391292	Marionette	INFO	Listening on port 53677
+WebDriver BiDi listening on ws://127.0.0.1:52551
+Read port: 53677
+1779341391455	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: "Experiment desktop-release-rollout-show-relay-to-all-browsers-next-sign-up-modal-cta has unknown featureId: email-autocomplete-relay"
+console.error: "Experiment visual-card-updates has unknown featureId: newtabRefinedCardsLayout"
+console.warn: AboutNewTabResourceMapping: "cancel xpi download on train-hop add-on version 151.3.20260419.192959 on equal or higher builtin version 151.4.0"
+[fluent-dom] An element named "count" wasn't found in the source.
+[fluent-dom] An element named "count" wasn't found in the source.
+console.error: [Exception... "Favicon at "https://hrms.tringapps.net/favicon.ico" failed to load."  nsresult: "0x805a1ff3 (<unknown>)"  location: "JS frame :: resource:///modules/FaviconLoader.sys.mjs :: onStopRequest :: line 274"  data: no]
+1779341458208	Marionette	INFO	Stopped listening on port 53677
+JavaScript error: resource://gre/modules/PrivateBrowsingUtils.sys.mjs, line 50: TypeError: can't access property "QueryInterface", aWindow.docShell is null
+Dynamically enable window occlusion 1

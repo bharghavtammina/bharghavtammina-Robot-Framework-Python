@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.0 on win32)" generated="2026-05-19T12:41:49.296914" rpa="true" schemaversion="5">
+<suite id="s1" name="01 Browse Example Site" source="C:\Users\Lokesh\Desktop\Robotic Framework Python\automations\01_browse_example_site.robot">
+<test id="s1-t1" name="Show Example Domain Page" line="7">
+<kw name="Get Run Timestamp" owner="helpers">
+<msg time="2026-05-19T12:41:49.512857" level="INFO">${when} = 2026-05-19 12:41:49</msg>
+<var>${when}</var>
+<doc>Return current time for logs and reports.</doc>
+<status status="PASS" start="2026-05-19T12:41:49.512857" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-19T12:41:49.513866" level="INFO">Browser automation started at 2026-05-19 12:41:49</msg>
+<arg>Browser automation started at ${when}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-19T12:41:49.512857" elapsed="0.001009"/>
+</kw>
+<kw name="Open Automation Browser" owner="browser">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-19T12:41:49.513866" level="INFO">Opening browser 'chrome' to base url 'https://example.com'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-19T12:41:49.513866" elapsed="4.946047"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.461044" elapsed="0.049396"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.511954" elapsed="0.003030"/>
+</kw>
+<doc>Opens Chrome and navigates to the target page.</doc>
+<status status="PASS" start="2026-05-19T12:41:49.513866" elapsed="5.001118"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-19T12:41:54.524624" level="INFO">Page title is 'Example Domain'.</msg>
+<arg>Example Domain</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.515982" elapsed="0.008642"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-19T12:41:54.546951" level="INFO">Current page contains text 'This domain is for use in documentation examples'.</msg>
+<arg>This domain is for use in documentation examples</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.525837" elapsed="0.022114"/>
+</kw>
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2026-05-19T12:41:54.554478" level="INFO">${title} = Example Domain</msg>
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.547951" elapsed="0.006527"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-19T12:41:54.555484" level="INFO">Page title: Example Domain</msg>
+<arg>Page title: ${title}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.554478" elapsed="0.001006"/>
+</kw>
+<kw name="Close Automation Browser" owner="browser">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.557485" elapsed="2.219767"/>
+</kw>
+<doc>Closes all open browser windows.</doc>
+<status status="PASS" start="2026-05-19T12:41:54.556482" elapsed="2.220770"/>
+</kw>
+<status status="PASS" start="2026-05-19T12:41:49.511791" elapsed="7.265461"/>
+</test>
+<doc>POC: open a website, read the page, close the browser.</doc>
+<status status="PASS" start="2026-05-19T12:41:49.298904" elapsed="7.479349"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="01 Browse Example Site" id="s1" pass="1" fail="0" skip="0">01 Browse Example Site</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

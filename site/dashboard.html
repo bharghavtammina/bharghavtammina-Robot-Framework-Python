@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POC Demo Site — Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">POC Demo Site</a>
+      <nav class="nav">
+        <a href="index.html" id="nav-home">Home</a>
+        <a href="login.html" id="nav-login">Login</a>
+        <a href="contact.html" id="nav-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main narrow">
+    <p class="badge success">Login successful</p>
+    <h1 id="page-heading">Dashboard</h1>
+    <p id="welcome-message" class="lead">You are signed in. Automation reached this page.</p>
+
+    <section class="panel">
+      <h2>Quick stats</h2>
+      <ul class="stat-list">
+        <li><span>Tasks completed</span><strong id="stat-tasks">12</strong></li>
+        <li><span>Messages</span><strong id="stat-messages">3</strong></li>
+      </ul>
+    </section>
+
+    <a class="btn btn-secondary" href="index.html" id="btn-logout-home">Back to home</a>
+  </main>
+</body>
+</html>

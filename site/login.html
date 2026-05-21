@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POC Demo Site — Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">POC Demo Site</a>
+      <nav class="nav">
+        <a href="index.html" id="nav-home">Home</a>
+        <a href="login.html" id="nav-login">Login</a>
+        <a href="contact.html" id="nav-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main narrow">
+    <h1 id="page-heading">Sign in</h1>
+    <p class="lead">Demo credentials: <code>demo</code> / <code>secret123</code></p>
+
+    <form id="login-form" class="form" novalidate>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" placeholder="demo">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" placeholder="secret123">
+
+      <p id="login-error" class="error hidden" role="alert">Invalid username or password.</p>
+
+      <button type="submit" class="btn btn-primary" id="login-button">Log in</button>
+    </form>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POC Demo Site — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">POC Demo Site</a>
+      <nav class="nav">
+        <a href="index.html" id="nav-home">Home</a>
+        <a href="login.html" id="nav-login">Login</a>
+        <a href="contact.html" id="nav-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="hero">
+      <p class="badge">Local automation target</p>
+      <h1 id="page-heading">Welcome to your POC site</h1>
+      <p class="lead">
+        Use this page with Robot Framework. Start the server, then automate clicks,
+        forms, and navigation here — no internet required.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="login.html" id="btn-go-login">Try login flow</a>
+        <a class="btn btn-secondary" href="contact.html" id="btn-go-contact">Send a message</a>
+      </div>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <h2>Login page</h2>
+        <p>Username, password, and submit button with stable <code>id</code> attributes.</p>
+      </article>
+      <article class="card">
+        <h2>Contact form</h2>
+        <p>Name, email, message — good for typing and validation checks.</p>
+      </article>
+      <article class="card">
+        <h2>Dashboard</h2>
+        <p>Shown after a successful login (demo user: <strong>demo</strong> / <strong>secret123</strong>).</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">POC Demo Site — for Robot Framework practice only</div>
+  </footer>
+</body>
+</html>

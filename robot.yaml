@@ -1,0 +1,5 @@
+# Robot Framework project config (RF 6.1+)
+paths:
+  - automations
+outputdir: results
+consolewidth: 120
