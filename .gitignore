@@ -1,0 +1,24 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache/compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Robot Framework outputs
+output.xml
+log.html
+report.html
+
+# Test artifacts
+results/
+
+# IDE/local files
+.vscode/
+.idea/
+*.swp

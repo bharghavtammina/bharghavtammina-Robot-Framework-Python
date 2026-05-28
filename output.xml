@@ -1,86 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.0 on win32)" generated="2026-05-19T12:41:49.296914" rpa="true" schemaversion="5">
-<suite id="s1" name="01 Browse Example Site" source="C:\Users\Lokesh\Desktop\Robotic Framework Python\automations\01_browse_example_site.robot">
-<test id="s1-t1" name="Show Example Domain Page" line="7">
-<kw name="Get Run Timestamp" owner="helpers">
-<msg time="2026-05-19T12:41:49.512857" level="INFO">${when} = 2026-05-19 12:41:49</msg>
-<var>${when}</var>
-<doc>Return current time for logs and reports.</doc>
-<status status="PASS" start="2026-05-19T12:41:49.512857" elapsed="0.000000"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2026-05-19T12:41:49.513866" level="INFO">Browser automation started at 2026-05-19 12:41:49</msg>
-<arg>Browser automation started at ${when}</arg>
-<arg>console=yes</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2026-05-19T12:41:49.512857" elapsed="0.001009"/>
-</kw>
-<kw name="Open Automation Browser" owner="browser">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2026-05-19T12:41:49.513866" level="INFO">Opening browser 'chrome' to base url 'https://example.com'.</msg>
+<robot generator="Robot 7.4.2 (Python 3.11.0 on win32)" generated="2026-05-28T12:37:41.725088" rpa="false" schemaversion="5">
+<suite id="s1" name="Api Post" source="C:\Users\Lokesh\Documents\GitHub\Robot-Framework-Python\robottestcase\api_post.robot">
+<test id="s1-t1" name="POST Example - Create Booking" line="10">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-05-28T12:37:41.845076" level="INFO">Creating Session using : alias=api, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>api</arg>
 <arg>${BASE_URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2026-05-19T12:41:49.513866" elapsed="4.946047"/>
+<arg>verify=${VERIFY_SSL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-05-28T12:37:41.845076" elapsed="0.000000"/>
 </kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.461044" elapsed="0.049396"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-28T12:37:41.845076" level="INFO">${body} = {'firstname': 'Lokesh', 'lastname': 'QA', 'totalprice': '999', 'depositpaid': True}</msg>
+<var>${body}</var>
+<arg>firstname=Lokesh</arg>
+<arg>lastname=QA</arg>
+<arg>totalprice=999</arg>
+<arg>depositpaid=${True}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-28T12:37:41.845076" elapsed="0.000000"/>
 </kw>
-<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
-<arg>5s</arg>
-<doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.511954" elapsed="0.003030"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-28T12:37:41.845076" level="INFO">${dates} = {'checkin': '2026-06-01', 'checkout': '2026-06-05'}</msg>
+<var>${dates}</var>
+<arg>checkin=2026-06-01</arg>
+<arg>checkout=2026-06-05</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-28T12:37:41.845076" elapsed="0.000000"/>
 </kw>
-<doc>Opens Chrome and navigates to the target page.</doc>
-<status status="PASS" start="2026-05-19T12:41:49.513866" elapsed="5.001118"/>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${body}</arg>
+<arg>bookingdates=${dates}</arg>
+<arg>additionalneeds=Lunch</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2026-05-28T12:37:41.845076" elapsed="0.000000"/>
 </kw>
-<kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2026-05-19T12:41:54.524624" level="INFO">Page title is 'Example Domain'.</msg>
-<arg>Example Domain</arg>
-<doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.515982" elapsed="0.008642"/>
-</kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2026-05-19T12:41:54.546951" level="INFO">Current page contains text 'This domain is for use in documentation examples'.</msg>
-<arg>This domain is for use in documentation examples</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.525837" elapsed="0.022114"/>
-</kw>
-<kw name="Get Title" owner="SeleniumLibrary">
-<msg time="2026-05-19T12:41:54.554478" level="INFO">${title} = Example Domain</msg>
-<var>${title}</var>
-<doc>Returns the title of the current page.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.547951" elapsed="0.006527"/>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-05-28T12:37:42.857588" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '180', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "Lokesh", "lastname": "QA", "totalprice": "999", "depositpaid": true, "bookingdates": {"checkin": "2026-06-01", "checkout": "2026-06-05"}, "additionalneeds": "Lunch"}' 
+ </msg>
+<msg time="2026-05-28T12:37:42.857588" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '193', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Thu, 28 May 2026 07:07:42 GMT', 'Etag': 'W/"c1-BYRCdQNK1XiWrIoN4KBEAWZl0p4"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=wBuQzWRf3VECZV%2BtZmd3YOMH3fJFf5d%2Buus8d7vfrnc%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1779952062"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=wBuQzWRf3VECZV%2BtZmd3YOMH3fJFf5d%2Buus8d7vfrnc%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1779952062"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":3325,"booking":{"firstname":"Lokesh","lastname":"QA","totalprice":999,"depositpaid":true,"bookingdates":{"checkin":"2026-06-01","checkout":"2026-06-05"},"additionalneeds":"Lunch"}} 
+ </msg>
+<msg time="2026-05-28T12:37:42.857588" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/booking</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-05-28T12:37:41.845076" elapsed="1.012512"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2026-05-19T12:41:54.555484" level="INFO">Page title: Example Domain</msg>
-<arg>Page title: ${title}</arg>
-<arg>console=yes</arg>
+<msg time="2026-05-28T12:37:42.857588" level="INFO">Status: 200</msg>
+<arg>Status: ${response.status_code}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.554478" elapsed="0.001006"/>
+<status status="PASS" start="2026-05-28T12:37:42.857588" elapsed="0.000000"/>
 </kw>
-<kw name="Close Automation Browser" owner="browser">
-<kw name="Close All Browsers" owner="SeleniumLibrary">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.557485" elapsed="2.219767"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-28T12:37:42.857588" level="INFO">Headers: {'Content-Length': '193', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Thu, 28 May 2026 07:07:42 GMT', 'Etag': 'W/"c1-BYRCdQNK1XiWrIoN4KBEAWZl0p4"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=wBuQzWRf3VECZV%2BtZmd3YOMH3fJFf5d%2Buus8d7vfrnc%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1779952062"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=wBuQzWRf3VECZV%2BtZmd3YOMH3fJFf5d%2Buus8d7vfrnc%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1779952062"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'}</msg>
+<arg>Headers: ${response.headers}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-28T12:37:42.857588" elapsed="0.000000"/>
 </kw>
-<doc>Closes all open browser windows.</doc>
-<status status="PASS" start="2026-05-19T12:41:54.556482" elapsed="2.220770"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-28T12:37:42.857588" level="INFO">Body: {"bookingid":3325,"booking":{"firstname":"Lokesh","lastname":"QA","totalprice":999,"depositpaid":true,"bookingdates":{"checkin":"2026-06-01","checkout":"2026-06-05"},"additionalneeds":"Lunch"}}</msg>
+<arg>Body: ${response.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-28T12:37:42.857588" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2026-05-19T12:41:49.511791" elapsed="7.265461"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-28T12:37:42.857588" level="INFO">JSON: {'bookingid': 3325, 'booking': {'firstname': 'Lokesh', 'lastname': 'QA', 'totalprice': 999, 'depositpaid': True, 'bookingdates': {'checkin': '2026-06-01', 'checkout': '2026-06-05'}, 'additionalneeds': 'Lunch'}}</msg>
+<arg>JSON: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-28T12:37:42.857588" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response.status_code} == 200 or ${response.status_code} == 201</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-05-28T12:37:42.857588" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response.json()}[bookingid] &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-05-28T12:37:42.857588" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()}[booking][firstname]</arg>
+<arg>Lokesh</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-05-28T12:37:42.857588" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-05-28T12:37:41.840117" elapsed="1.017471"/>
 </test>
-<doc>POC: open a website, read the page, close the browser.</doc>
-<status status="PASS" start="2026-05-19T12:41:49.298904" elapsed="7.479349"/>
+<status status="PASS" start="2026-05-28T12:37:41.727130" elapsed="1.138403"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tasks</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="01 Browse Example Site" id="s1" pass="1" fail="0" skip="0">01 Browse Example Site</stat>
+<stat name="Api Post" id="s1" pass="1" fail="0" skip="0">Api Post</stat>
 </suite>
 </statistics>
 <errors>
