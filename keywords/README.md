@@ -1,18 +1,26 @@
 # Robot Framework Keywords Notes
 
-- `00_sections_and_structure.md`
-- `01_variables_keywords.md`
-- `02_collections_keywords.md`
-- `03_requests_keywords.md`
-- `04_assertion_keywords.md`
-- `05_control_flow_keywords.md`
-- `06_logging_and_debug_keywords.md`
-- `07_user_defined_keywords.md`
-- `08_seleniumlibrary_browser_and_navigation.md`
-- `09_seleniumlibrary_elements_and_actions.md`
-- `10_seleniumlibrary_waits_assertions_and_selectors.md`
-- `11_seleniumlibrary_frames_alerts_dropdowns_and_windows.md`
-- `12_seleniumlibrary_screenshots_cookies_and_js.md`
+Section-wise folders:
+- `settings/settings_commands.md`
+- `variables/variables_commands.md`
+- `testcases/testcases_commands.md`
+- `keywords/user_keywords_commands.md`
+- `SECTION_MAPPING.md`
+
+Moved concept files:
+- `settings/00_sections_and_structure.md`
+- `variables/01_variables_keywords.md`
+- `keywords/02_collections_keywords.md`
+- `testcases/03_requests_keywords.md`
+- `testcases/04_assertion_keywords.md`
+- `testcases/05_control_flow_keywords.md`
+- `testcases/06_logging_and_debug_keywords.md`
+- `keywords/07_user_defined_keywords.md`
+- `testcases/08_seleniumlibrary_browser_and_navigation.md`
+- `testcases/09_seleniumlibrary_elements_and_actions.md`
+- `testcases/10_seleniumlibrary_waits_assertions_and_selectors.md`
+- `testcases/11_seleniumlibrary_frames_alerts_dropdowns_and_windows.md`
+- `testcases/12_seleniumlibrary_screenshots_cookies_and_js.md`
 
 Generated complete SeleniumLibrary reference:
 - `seleniumlibrary_all_keywords.html`
