@@ -28,3 +28,7 @@ Generated complete SeleniumLibrary reference:
 
 Auto-split SeleniumLibrary notes (category-wise):
 - `seleniumlibrary_full_split/README.md`
+
+Full installed library reference pack:
+- `full_reference/` (HTML + XML per library)
+- `full_reference/markdown_split/README.md`

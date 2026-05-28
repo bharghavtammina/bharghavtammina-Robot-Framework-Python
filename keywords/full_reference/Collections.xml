@@ -1,0 +1,2136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keywordspec name="Collections" type="LIBRARY" format="ROBOT" scope="GLOBAL" generated="2026-05-28T11:31:35+00:00" specversion="6" source="C:\Users\Lokesh\Documents\GitHub\Robot-Framework-Python\venv\Lib\site-packages\robot\libraries\Collections.py" lineno="1040">
+<version>7.4.2</version>
+<doc>A library providing keywords for handling lists and dictionaries.
+
+``Collections`` is Robot Framework's standard library that provides a
+set of keywords for handling Python lists and dictionaries. This
+library has keywords, for example, for modifying and getting
+values from lists and dictionaries (e.g. `Append To List`, `Get
+From Dictionary`) and for verifying their contents (e.g. `Lists
+Should Be Equal`, `Dictionary Should Contain Value`).
+
+== Table of contents ==
+
+- `Related keywords in BuiltIn`
+- `Using with list-like and dictionary-like objects`
+- `Ignore case`
+- `Data in examples`
+- `Keywords`
+
+= Related keywords in BuiltIn =
+
+Following keywords in the BuiltIn library can also be used with
+lists and dictionaries:
+
+| = Keyword Name =             | = Applicable With = |
+| `Create List`                | lists |
+| `Create Dictionary`          | dicts |
+| `Get Length`                 | both  |
+| `Length Should Be`           | both  |
+| `Should Be Empty`            | both  |
+| `Should Not Be Empty`        | both  |
+| `Should Contain`             | both  |
+| `Should Not Contain`         | both  |
+| `Should Contain X Times`     | lists |
+| `Should Not Contain X Times` | lists |
+| `Get Count`                  | lists |
+
+= Using with list-like and dictionary-like objects =
+
+List related keywords can in general be used with tuples and other sequences,
+not only with ``list`` objects. List keywords that validate something typically
+even work with sets and mappings (with mappings they look only at keys).
+If keywords that modify lists are used with immutable sequences such as tuples,
+values are automatically converted to lists. In such cases the original value
+obviously is not mutated, but these keywords also return the modified value
+and that can be used instead.
+
+Dictionary related keywords also generally work with any mapping, not only
+with ``dict`` objects. If keywords that modify dictionaries are used with
+immutable mappings, values are automatically converted to dictionaries.
+Original values cannot be modified in these cases either, but modified values
+are returned and can be used instead.
+
+What values each keyword actually accepts can be seen from argument types
+and keyword documentation.
+
+Returning values from keywords that modify lists or dictionaries is new
+in Robot Framework 7.4. With earlier version these keywords could only
+be used with mutable values.
+
+= Ignore case =
+
+Various keywords support ignoring case in comparisons by using the optional
+``ignore_case`` argument. Case-insensitivity can be enabled by using
+``ignore_case=True`` and it works recursively.
+
+With dictionaries, it is also possible to use special values ``KEYS`` and
+``VALUES`` to normalize only keys or values, respectively. These options
+themselves are case-insensitive and also singular forms ``KEY`` and
+``VALUE`` are supported.
+
+If a dictionary contains keys that normalize to the same value, e.g.
+``{'a': 1, 'A': 2}``, normalizing keys causes an error.
+
+Examples:
+| `Lists Should Be Equal`        | ${list1} | ${list2} | ignore_case=True   |
+| `Dictionaries Should Be Equal` | ${dict1} | ${dict2} | ignore_case=VALUES |
+
+Notice that some keywords accept also an older ``case_insensitive`` argument
+in addition to ``ignore_case``. The latter is new in Robot Framework 7.0 and
+should be used unless there is a need to support older versions. The old
+argument is considered deprecated and will eventually be removed.
+
+Starting from Robot Framework 7.4, case-insensitivity works also with
+bytes, not only with strings.
+
+= Data in examples =
+
+List related keywords use variables in format ``${Lx}`` in their examples.
+They mean lists with as many alphabetic characters as specified by ``x``.
+For example, ``${L1}`` means ``['a']`` and ``${L3}`` means
+``['a', 'b', 'c']``.
+
+Dictionary keywords use similar ``${Dx}`` variables. For example, ``${D1}``
+means ``{'a': 1}`` and ``${D3}`` means ``{'a': 1, 'b': 2, 'c': 3}``.</doc>
+<tags>
+</tags>
+<inits>
+</inits>
+<keywords>
+<kw name="Append To List" lineno="50">
+<arguments repr="list_: MutableSequence, *values: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: MutableSequence">
+<name>list_</name>
+<type name="MutableSequence" typedoc="Sequence"/>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*values: object">
+<name>values</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="MutableSequence" typedoc="Sequence"/>
+<doc>Adds ``values`` to the end of ``list``.
+
+Starting from Robot Framework 7.4, the modified list is also returned.
+
+Example:
+| Append To List | ${L1} | xxx |   |   |
+| Append To List | ${L2} | x   | y | z |
+=&gt;
+| ${L1} = ['a', 'xxx']
+| ${L2} = ['a', 'b', 'x', 'y', 'z']</doc>
+<shortdoc>Adds ``values`` to the end of ``list``.</shortdoc>
+</kw>
+<kw name="Combine Lists" lineno="100">
+<arguments repr="*lists: Sequence | Mapping | Set">
+<arg kind="VAR_POSITIONAL" required="false" repr="*lists: Sequence | Mapping | Set">
+<name>lists</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+</arguments>
+<returntype name="list" typedoc="list"/>
+<doc>Combines the given ``lists`` together and returns the result.
+
+The given lists are not altered by this keyword.
+
+Example:
+| ${x} = | Combine Lists | ${L1} | ${L2} |       |
+| ${y} = | Combine Lists | ${L1} | ${L2} | ${L1} |
+=&gt;
+| ${x} = ['a', 'a', 'b']
+| ${y} = ['a', 'a', 'b', 'a']
+| ${L1} and ${L2} are not changed.</doc>
+<shortdoc>Combines the given ``lists`` together and returns the result.</shortdoc>
+</kw>
+<kw name="Convert To Dictionary" lineno="570">
+<arguments repr="item: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="item: object">
+<name>item</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="dict" typedoc="dictionary"/>
+<doc>Converts the given ``item`` to a Python ``dict`` type.
+
+Mainly useful for converting other mappings to normal dictionaries.
+This includes converting Robot Framework's own ``DotDict`` instances
+that it uses if variables are created using the ``&amp;{var}`` syntax.
+
+Use `Create Dictionary` from the BuiltIn library for constructing new
+dictionaries.</doc>
+<shortdoc>Converts the given ``item`` to a Python ``dict`` type.</shortdoc>
+</kw>
+<kw name="Convert To List" lineno="39">
+<arguments repr="item: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="item: object">
+<name>item</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="list" typedoc="list"/>
+<doc>Converts the given ``item`` to a Python ``list`` type.
+
+Mainly useful for converting tuples and other iterable to lists.
+Use `Create List` from the BuiltIn library for constructing new lists.
+
+To split strings into characters, the `Split String To Characters` from
+the String Library can be used.</doc>
+<shortdoc>Converts the given ``item`` to a Python ``list`` type.</shortdoc>
+</kw>
+<kw name="Copy Dictionary" lineno="686">
+<arguments repr="dictionary: Mapping, deepcopy: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="deepcopy: bool = False">
+<name>deepcopy</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<returntype name="Mapping" typedoc="Mapping"/>
+<doc>Returns a copy of the given dictionary.
+
+By default, returns a new dictionary with same items as in the original.
+Set the ``deepcopy`` argument to a true value if also items should
+be copied.
+
+The given dictionary is never altered by this keyword.</doc>
+<shortdoc>Returns a copy of the given dictionary.</shortdoc>
+</kw>
+<kw name="Copy List" lineno="321">
+<arguments repr="list_: Sequence, deepcopy: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="deepcopy: bool = False">
+<name>deepcopy</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<returntype name="Sequence" typedoc="Sequence"/>
+<doc>Returns a copy of the given list.
+
+By default, returns a new list with same items as in the original.
+Set the ``deepcopy`` argument to a true value if also items should
+be copied.
+
+The given list is never altered by this keyword.</doc>
+<shortdoc>Returns a copy of the given list.</shortdoc>
+</kw>
+<kw name="Count Values In List" lineno="267">
+<arguments repr="list_: Sequence, value: object, start: int = 0, end: int | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="start: int = 0">
+<name>start</name>
+<type name="int" typedoc="integer"/>
+<default>0</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="end: int | None = None">
+<name>end</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="int" typedoc="integer"/>
+<doc>Returns the number of occurrences of the given ``value`` in ``list``.
+
+The search can be narrowed to the selected sublist by the ``start`` and
+``end`` indexes having the same semantics as with `Get Slice From List`
+keyword. The given list is never altered by this keyword.
+
+Example:
+| ${x} = | Count Values In List | ${L3} | b |
+=&gt;
+| ${x} = 1
+| ${L3} is not changed</doc>
+<shortdoc>Returns the number of occurrences of the given ``value`` in ``list``.</shortdoc>
+</kw>
+<kw name="Dictionaries Should Be Equal" lineno="900">
+<arguments repr="dict1: Mapping, dict2: Mapping, msg: str | None = None, values: bool = True, ignore_keys: Sequence | None = None, ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False, ignore_value_order: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dict1: Mapping">
+<name>dict1</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dict2: Mapping">
+<name>dict2</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="values: bool = True">
+<name>values</name>
+<type name="bool" typedoc="boolean"/>
+<default>True</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_keys: Sequence | None = None">
+<name>ignore_keys</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<name>ignore_case</name>
+<type name="Union" union="true">
+<type name="Literal" typedoc="Literal">
+<type name="'KEY'"/>
+<type name="'KEYS'"/>
+<type name="'VALUE'"/>
+<type name="'VALUES'"/>
+</type>
+<type name="bool" typedoc="boolean"/>
+</type>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_value_order: bool = False">
+<name>ignore_value_order</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if the given dictionaries are not equal.
+
+First the equality of dictionaries' keys is checked and after that all
+the key value pairs. If there are differences between the values, those
+are listed in the error message. The types of the dictionaries do not
+need to be same.
+
+``ignore_keys`` can be used to provide a list of keys to ignore in the
+comparison. This option is new in Robot Framework 6.1. It works recursively
+with nested dictionaries starting from Robot Framework 7.0.
+
+Examples:
+| Dictionaries Should Be Equal | ${dict} | ${expected} |
+| Dictionaries Should Be Equal | ${dict} | ${expected} | ignore_keys=${ignored} |
+| Dictionaries Should Be Equal | ${dict} | ${expected} | ignore_keys=['key1', 'key2'] |
+
+See `Lists Should Be Equal` for more information about configuring
+the error message with ``msg`` and ``values`` arguments.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.
+
+The ``ignore_value_order`` argument can be used to make comparison in case of
+list-like values to ignore the order of the elements in the lists.
+Using it requires items to be sortable.
+This option is new in Robot Framework 7.2.</doc>
+<shortdoc>Fails if the given dictionaries are not equal.</shortdoc>
+</kw>
+<kw name="Dictionary Should Contain Item" lineno="837">
+<arguments repr="dictionary: Mapping, key: object, value: object, msg: str | None = None, ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="key: object">
+<name>key</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<name>ignore_case</name>
+<type name="Union" union="true">
+<type name="Literal" typedoc="Literal">
+<type name="'KEY'"/>
+<type name="'KEYS'"/>
+<type name="'VALUE'"/>
+<type name="'VALUES'"/>
+</type>
+<type name="bool" typedoc="boolean"/>
+</type>
+<default>False</default>
+</arg>
+</arguments>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.
+
+Use the ``msg`` argument to override the default error message.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</shortdoc>
+</kw>
+<kw name="Dictionary Should Contain Key" lineno="799">
+<arguments repr="dictionary: Mapping, key: object, msg: str | None = None, ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="key: object">
+<name>key</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<name>ignore_case</name>
+<type name="Union" union="true">
+<type name="Literal" typedoc="Literal">
+<type name="'KEY'"/>
+<type name="'KEYS'"/>
+<type name="'VALUE'"/>
+<type name="'VALUES'"/>
+</type>
+<type name="bool" typedoc="boolean"/>
+</type>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if ``key`` is not found from ``dictionary``.
+
+Use the ``msg`` argument to override the default error message.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if ``key`` is not found from ``dictionary``.</shortdoc>
+</kw>
+<kw name="Dictionary Should Contain Sub Dictionary" lineno="985">
+<arguments repr="dict1: Mapping, dict2: Mapping, msg: str | None = None, values: bool = True, ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False, ignore_value_order: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dict1: Mapping">
+<name>dict1</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dict2: Mapping">
+<name>dict2</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="values: bool = True">
+<name>values</name>
+<type name="bool" typedoc="boolean"/>
+<default>True</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<name>ignore_case</name>
+<type name="Union" union="true">
+<type name="Literal" typedoc="Literal">
+<type name="'KEY'"/>
+<type name="'KEYS'"/>
+<type name="'VALUE'"/>
+<type name="'VALUES'"/>
+</type>
+<type name="bool" typedoc="boolean"/>
+</type>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_value_order: bool = False">
+<name>ignore_value_order</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails unless all items in ``dict2`` are found from ``dict1``.
+
+See `Lists Should Be Equal` for more information about configuring
+the error message with ``msg`` and ``values`` arguments.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.
+
+The ``ignore_value_order`` argument can be used to make comparison in case of
+list-like values to ignore the order of the elements in the lists.
+Using it requires items to be sortable.
+This option is new in Robot Framework 7.2.</doc>
+<shortdoc>Fails unless all items in ``dict2`` are found from ``dict1``.</shortdoc>
+</kw>
+<kw name="Dictionary Should Contain Value" lineno="862">
+<arguments repr="dictionary: Mapping, value: object, msg: str | None = None, ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<name>ignore_case</name>
+<type name="Union" union="true">
+<type name="Literal" typedoc="Literal">
+<type name="'KEY'"/>
+<type name="'KEYS'"/>
+<type name="'VALUE'"/>
+<type name="'VALUES'"/>
+</type>
+<type name="bool" typedoc="boolean"/>
+</type>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if ``value`` is not found from ``dictionary``.
+
+Use the ``msg`` argument to override the default error message.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if ``value`` is not found from ``dictionary``.</shortdoc>
+</kw>
+<kw name="Dictionary Should Not Contain Key" lineno="818">
+<arguments repr="dictionary: Mapping, key: object, msg: str | None = None, ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="key: object">
+<name>key</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<name>ignore_case</name>
+<type name="Union" union="true">
+<type name="Literal" typedoc="Literal">
+<type name="'KEY'"/>
+<type name="'KEYS'"/>
+<type name="'VALUE'"/>
+<type name="'VALUES'"/>
+</type>
+<type name="bool" typedoc="boolean"/>
+</type>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if ``key`` is found from ``dictionary``.
+
+Use the ``msg`` argument to override the default error message.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if ``key`` is found from ``dictionary``.</shortdoc>
+</kw>
+<kw name="Dictionary Should Not Contain Value" lineno="881">
+<arguments repr="dictionary: Mapping, value: object, msg: str | None = None, ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: Literal['KEY', 'KEYS', 'VALUE', 'VALUES'] | bool = False">
+<name>ignore_case</name>
+<type name="Union" union="true">
+<type name="Literal" typedoc="Literal">
+<type name="'KEY'"/>
+<type name="'KEYS'"/>
+<type name="'VALUE'"/>
+<type name="'VALUES'"/>
+</type>
+<type name="bool" typedoc="boolean"/>
+</type>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if ``value`` is found from ``dictionary``.
+
+Use the ``msg`` argument to override the default error message.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if ``value`` is found from ``dictionary``.</shortdoc>
+</kw>
+<kw name="Get Dictionary Items" lineno="747">
+<arguments repr="dictionary: Mapping, sort_keys: bool = True">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="sort_keys: bool = True">
+<name>sort_keys</name>
+<type name="bool" typedoc="boolean"/>
+<default>True</default>
+</arg>
+</arguments>
+<returntype name="list" typedoc="list">
+<type name="tuple" typedoc="tuple">
+<type name="object" typedoc="object"/>
+<type name="object" typedoc="object"/>
+</type>
+</returntype>
+<doc>Returns items of the given ``dictionary`` as a list.
+
+Uses `Get Dictionary Keys` to get keys and then returns corresponding
+items. By default, keys are sorted and items returned in that order,
+but this can be changed by giving ``sort_keys`` a false value.
+
+Items are returned as a flat list so that first item is a key,
+second item is a corresponding value, third item is the second key,
+and so on.
+
+The given ``dictionary`` is never altered by this keyword.
+
+Example:
+| ${sorted} =   | Get Dictionary Items | ${D3} |
+| ${unsorted} = | Get Dictionary Items | ${D3} | sort_keys=False |</doc>
+<shortdoc>Returns items of the given ``dictionary`` as a list.</shortdoc>
+</kw>
+<kw name="Get Dictionary Keys" lineno="703">
+<arguments repr="dictionary: Mapping, sort_keys: bool = True">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="sort_keys: bool = True">
+<name>sort_keys</name>
+<type name="bool" typedoc="boolean"/>
+<default>True</default>
+</arg>
+</arguments>
+<returntype name="list" typedoc="list">
+<type name="object" typedoc="object"/>
+</returntype>
+<doc>Returns keys of the given ``dictionary`` as a list.
+
+By default, keys are returned in sorted order (assuming they are
+sortable), but they can be returned in the original order by giving
+``sort_keys`` a false value.
+
+The given ``dictionary`` is never altered by this keyword.
+
+Example:
+| ${sorted} =   | Get Dictionary Keys | ${D3} |
+| ${unsorted} = | Get Dictionary Keys | ${D3} | sort_keys=False |</doc>
+<shortdoc>Returns keys of the given ``dictionary`` as a list.</shortdoc>
+</kw>
+<kw name="Get Dictionary Values" lineno="727">
+<arguments repr="dictionary: Mapping, sort_keys: bool = True">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="sort_keys: bool = True">
+<name>sort_keys</name>
+<type name="bool" typedoc="boolean"/>
+<default>True</default>
+</arg>
+</arguments>
+<returntype name="list" typedoc="list">
+<type name="object" typedoc="object"/>
+</returntype>
+<doc>Returns values of the given ``dictionary`` as a list.
+
+Uses `Get Dictionary Keys` to get keys and then returns corresponding
+values. By default, keys are sorted and values returned in that order,
+but this can be changed by giving ``sort_keys`` a false value.
+
+The given ``dictionary`` is never altered by this keyword.
+
+Example:
+| ${sorted} =   | Get Dictionary Values | ${D3} |
+| ${unsorted} = | Get Dictionary Values | ${D3} | sort_keys=False |</doc>
+<shortdoc>Returns values of the given ``dictionary`` as a list.</shortdoc>
+</kw>
+<kw name="Get From Dictionary" lineno="771">
+<arguments repr="dictionary: Mapping, key: object, default: object = ">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="key: object">
+<name>key</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="default: object = ">
+<name>default</name>
+<type name="object" typedoc="object"/>
+<default/>
+</arg>
+</arguments>
+<returntype name="object" typedoc="object"/>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.
+
+If the given ``key`` cannot be found from the ``dictionary``, this
+keyword fails. If optional ``default`` value is given, it will be
+returned instead of failing.
+
+The given dictionary is never altered by this keyword.
+
+Example:
+| ${value} = | Get From Dictionary | ${D3} | b |
+=&gt;
+| ${value} = 2
+
+Support for ``default`` is new in Robot Framework 6.0.</doc>
+<shortdoc>Returns a value from the given ``dictionary`` based on the given ``key``.</shortdoc>
+</kw>
+<kw name="Get From List" lineno="205">
+<arguments repr="list_: Sequence, index: int">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="index: int">
+<name>index</name>
+<type name="int" typedoc="integer"/>
+</arg>
+</arguments>
+<returntype name="object" typedoc="object"/>
+<doc>Returns the value specified with an ``index`` from ``list``.
+
+The given list is never altered by this keyword.
+
+Index ``0`` means the first position, ``1`` the second, and so on.
+Similarly, ``-1`` is the last position, ``-2`` the second last, and so on.
+Using an index that does not exist on the list causes an error.
+The index can be either an integer or a string that can be converted
+to an integer.
+
+Examples (including Python equivalents in comments):
+| ${x} = | Get From List | ${L5} | 0  | # L5[0]  |
+| ${y} = | Get From List | ${L5} | -2 | # L5[-2] |
+=&gt;
+| ${x} = 'a'
+| ${y} = 'd'
+| ${L5} is not changed</doc>
+<shortdoc>Returns the value specified with an ``index`` from ``list``.</shortdoc>
+</kw>
+<kw name="Get Index From List" lineno="288">
+<arguments repr="list_: Sequence, value: object, start: int | Literal[''] = 0, end: int | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="start: int | Literal[''] = 0">
+<name>start</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="Literal" typedoc="Literal">
+<type name="''"/>
+</type>
+</type>
+<default>0</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="end: int | None = None">
+<name>end</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="int" typedoc="integer"/>
+<doc>Returns the index of the first occurrence of the ``value`` on the list.
+
+The search can be narrowed to the selected sublist by the ``start`` and
+``end`` indexes having the same semantics as with `Get Slice From List`
+keyword. In case the value is not found, -1 is returned. The given list
+is never altered by this keyword.
+
+Example:
+| ${x} = | Get Index From List | ${L5} | d |
+=&gt;
+| ${x} = 3
+| ${L5} is not changed</doc>
+<shortdoc>Returns the index of the first occurrence of the ``value`` on the list.</shortdoc>
+</kw>
+<kw name="Get Match Count" lineno="1252">
+<arguments repr="list: Sequence | Mapping | Set, pattern: str, case_insensitive: bool | None = None, whitespace_insensitive: bool | None = None, ignore_case: bool = False, ignore_whitespace: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list: Sequence | Mapping | Set">
+<name>list</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str">
+<name>pattern</name>
+<type name="str" typedoc="string"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="case_insensitive: bool | None = None">
+<name>case_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="whitespace_insensitive: bool | None = None">
+<name>whitespace_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_whitespace: bool = False">
+<name>ignore_whitespace</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<returntype name="int" typedoc="integer"/>
+<doc>Returns the count of matches to ``pattern`` in ``list``.
+
+For more information on ``pattern``, ``case_insensitive/ignore_case``, and
+``whitespace_insensitive/ignore_whitespace``, see `Should Contain Match`.
+
+Examples:
+| ${count}= | Get Match Count | ${list} | a* | # ${count} will be the count of strings beginning with 'a' |
+| ${count}= | Get Match Count | ${list} | regexp=a.* | # ${matches} will be the count of strings beginning with 'a' (regexp version) |
+| ${count}= | Get Match Count | ${list} | a* | case_insensitive=${True} | # ${matches} will be the count of strings beginning with 'a' or 'A' |</doc>
+<shortdoc>Returns the count of matches to ``pattern`` in ``list``.</shortdoc>
+</kw>
+<kw name="Get Matches" lineno="1224">
+<arguments repr="list: Sequence | Mapping | Set, pattern: str, case_insensitive: bool | None = None, whitespace_insensitive: bool | None = None, ignore_case: bool = False, ignore_whitespace: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list: Sequence | Mapping | Set">
+<name>list</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str">
+<name>pattern</name>
+<type name="str" typedoc="string"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="case_insensitive: bool | None = None">
+<name>case_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="whitespace_insensitive: bool | None = None">
+<name>whitespace_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_whitespace: bool = False">
+<name>ignore_whitespace</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<returntype name="list" typedoc="list">
+<type name="str" typedoc="string"/>
+</returntype>
+<doc>Returns a list of matches to ``pattern`` in ``list``.
+
+For more information on ``pattern``, ``case_insensitive/ignore_case``, and
+``whitespace_insensitive/ignore_whitespace``, see `Should Contain Match`.
+
+Examples:
+| ${matches}= | Get Matches | ${list} | a* | # ${matches} will contain any string beginning with 'a' |
+| ${matches}= | Get Matches | ${list} | regexp=a.* | # ${matches} will contain any string beginning with 'a' (regexp version) |
+| ${matches}= | Get Matches | ${list} | a* | ignore_case=True | # ${matches} will contain any string beginning with 'a' or 'A' |</doc>
+<shortdoc>Returns a list of matches to ``pattern`` in ``list``.</shortdoc>
+</kw>
+<kw name="Get Slice From List" lineno="229">
+<arguments repr="list_: Sequence, start: int | Literal[''] = 0, end: int | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="start: int | Literal[''] = 0">
+<name>start</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="Literal" typedoc="Literal">
+<type name="''"/>
+</type>
+</type>
+<default>0</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="end: int | None = None">
+<name>end</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Sequence" typedoc="Sequence"/>
+<doc>Returns a slice of the given list between ``start`` and ``end`` indexes.
+
+The given list is never altered by this keyword.
+
+If both ``start`` and ``end`` are given, a sublist containing values
+from ``start`` to ``end`` is returned. This is the same as
+``list[start:end]`` in Python. To get all items from the beginning,
+use 0 as the start value, and to get all items until and including
+the end, use ``None`` (default) as the end value.
+
+Using ``start`` or ``end`` not found on the list is the same as using
+the largest (or smallest) available index.
+
+Examples (incl. Python equivalents in comments):
+| ${x} = | Get Slice From List | ${L5} | 2      | 4 | # L5[2:4]    |
+| ${y} = | Get Slice From List | ${L5} | 1      |   | # L5[1:None] |
+| ${z} = | Get Slice From List | ${L5} | end=-2 |   | # L5[0:-2]   |
+=&gt;
+| ${x} = ['c', 'd']
+| ${y} = ['b', 'c', 'd', 'e']
+| ${z} = ['a', 'b', 'c']
+| ${L5} is not changed</doc>
+<shortdoc>Returns a slice of the given list between ``start`` and ``end`` indexes.</shortdoc>
+</kw>
+<kw name="Insert Into List" lineno="69">
+<arguments repr="list_: MutableSequence, index: int, value: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: MutableSequence">
+<name>list_</name>
+<type name="MutableSequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="index: int">
+<name>index</name>
+<type name="int" typedoc="integer"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="MutableSequence" typedoc="Sequence"/>
+<doc>Inserts ``value`` into ``list`` to the position specified with ``index``.
+
+Index ``0`` adds the value into the first position, ``1`` to the second,
+and so on. Inserting from right works with negative indices so that
+``-1`` is the second last position, ``-2`` third last, and so on. Use
+`Append To List` to add items to the end of the list.
+
+If the absolute value of the index is greater than
+the length of the list, the value is added at the end
+(positive index) or the beginning (negative index). An index
+can be given either as an integer or a string that can be
+converted to an integer.
+
+Starting from Robot Framework 7.4, the modified list is also returned.
+
+Example:
+| Insert Into List | ${L1} | 0     | xxx |
+| Insert Into List | ${L2} | ${-1} | xxx |
+=&gt;
+| ${L1} = ['xxx', 'a']
+| ${L2} = ['a', 'xxx', 'b']</doc>
+<shortdoc>Inserts ``value`` into ``list`` to the position specified with ``index``.</shortdoc>
+</kw>
+<kw name="Keep In Dictionary" lineno="666">
+<arguments repr="dictionary: MutableMapping, *keys: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: MutableMapping">
+<name>dictionary</name>
+<type name="MutableMapping" typedoc="Mapping"/>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*keys: object">
+<name>keys</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="MutableMapping" typedoc="Mapping"/>
+<doc>Keeps the given ``keys`` in the ``dictionary`` and removes all others.
+
+If the given ``key`` does not exist in the ``dictionary``, it is ignored.
+
+Starting from Robot Framework 7.4, the modified dictionary is also returned.
+
+Example:
+| Keep In Dictionary | ${D5} | b | x | d |
+=&gt;
+| ${D5} = {'b': 2, 'd': 4}</doc>
+<shortdoc>Keeps the given ``keys`` in the ``dictionary`` and removes all others.</shortdoc>
+</kw>
+<kw name="List Should Contain Sub List" lineno="521">
+<arguments repr="list1: Sequence | Mapping | Set, list2: Sequence | Mapping | Set, msg: str | None = None, values: bool = True, ignore_case: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list1: Sequence | Mapping | Set">
+<name>list1</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list2: Sequence | Mapping | Set">
+<name>list2</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="values: bool = True">
+<name>values</name>
+<type name="bool" typedoc="boolean"/>
+<default>True</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if not all elements in ``list2`` are found in ``list1``.
+
+The order of values and the number of values are not taken into
+account.
+
+See `Lists Should Be Equal` for more information about configuring
+the error message with ``msg`` and ``values`` arguments.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if not all elements in ``list2`` are found in ``list1``.</shortdoc>
+</kw>
+<kw name="List Should Contain Value" lineno="367">
+<arguments repr="list_: Sequence | Mapping | Set, value: object, msg: str | None = None, ignore_case: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence | Mapping | Set">
+<name>list_</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if the ``value`` is not found from ``list``.
+
+Use the ``msg`` argument to override the default error message.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if the ``value`` is not found from ``list``.</shortdoc>
+</kw>
+<kw name="List Should Not Contain Duplicates" lineno="405">
+<arguments repr="list_: Sequence, msg: str | None = None, ignore_case: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if any element in the ``list`` is found from it more than once.
+
+The default error message lists all the elements that were found
+from the ``list`` multiple times, but it can be overridden by giving
+a custom ``msg``. All multiple times found items and their counts are
+also logged.
+
+This keyword works with all iterables that can be converted to a list.
+The original iterable is never altered.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if any element in the ``list`` is found from it more than once.</shortdoc>
+</kw>
+<kw name="List Should Not Contain Value" lineno="386">
+<arguments repr="list_: Sequence | Mapping | Set, value: object, msg: str | None = None, ignore_case: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence | Mapping | Set">
+<name>list_</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if the ``value`` is found from ``list``.
+
+Use the ``msg`` argument to override the default error message.
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if the ``value`` is found from ``list``.</shortdoc>
+</kw>
+<kw name="Lists Should Be Equal" lineno="436">
+<arguments repr="list1: Sequence | Mapping | Set, list2: Sequence | Mapping | Set, msg: str | None = None, values: bool = True, names: Mapping[int, str] | Sequence[str] | None = None, ignore_order: bool = False, ignore_case: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list1: Sequence | Mapping | Set">
+<name>list1</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list2: Sequence | Mapping | Set">
+<name>list2</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="values: bool = True">
+<name>values</name>
+<type name="bool" typedoc="boolean"/>
+<default>True</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="names: Mapping[int, str] | Sequence[str] | None = None">
+<name>names</name>
+<type name="Union" union="true">
+<type name="Mapping" typedoc="Mapping">
+<type name="int" typedoc="integer"/>
+<type name="str" typedoc="string"/>
+</type>
+<type name="Sequence" typedoc="Sequence">
+<type name="str" typedoc="string"/>
+</type>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_order: bool = False">
+<name>ignore_order</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if given lists are unequal.
+
+The keyword first verifies that the lists have equal lengths, and then
+it checks are all their values equal. Possible differences between the
+values are listed in the default error message like ``Index 4: ABC !=
+Abc``. The types of the lists do not need to be the same. For example,
+Python tuple and list with same content are considered equal.
+
+The error message can be configured using ``msg`` and ``values``
+arguments:
+- If ``msg`` is not given, the default error message is used.
+- If ``msg`` is given and ``values`` gets a value considered true,
+  the error message starts with the given
+  ``msg`` followed by a newline and the default message.
+- If ``msg`` is given and ``values``  is not given a true value,
+  the error message is just the given ``msg``.
+
+The optional ``names`` argument can be used for naming the indices
+shown in the default error message. It can either be a list of names
+matching the indices in the lists or a dictionary where keys are
+indices that need to be named. It is not necessary to name all indices.
+When using a dictionary, keys can be either integers
+or strings that can be converted to integers.
+
+Examples:
+| ${names} = | Create List | First Name | Family Name | Email |
+| Lists Should Be Equal | ${people1} | ${people2} | names=${names} |
+| ${names} = | Create Dictionary | 0=First Name | 2=Email |
+| Lists Should Be Equal | ${people1} | ${people2} | names=${names} |
+
+If the items in index 2 would differ in the above examples, the error
+message would contain a row like ``Index 2 (email): name@foo.com !=
+name@bar.com``.
+
+The optional ``ignore_order`` argument can be used to ignore the order
+of the elements in the lists. Using it requires items to be sortable.
+This option works recursively with nested lists starting from Robot
+Framework 7.0.
+
+Example:
+| ${list1} = | Create List | apple | cherry | banana |
+| ${list2} = | Create List | cherry | banana | apple |
+| Lists Should Be Equal | ${list1} | ${list2} | ignore_order=True |
+
+The ``ignore_case`` argument can be used to make comparison case-insensitive.
+See the `Ignore case` section for more details. This option is new in
+Robot Framework 7.0.</doc>
+<shortdoc>Fails if given lists are unequal.</shortdoc>
+</kw>
+<kw name="Log Dictionary" lineno="1018">
+<arguments repr="dictionary: Mapping, level: Literal['TRACE', 'DEBUG', 'INFO', 'CONSOLE', 'HTML', 'WARN', 'ERROR'] = INFO">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: Mapping">
+<name>dictionary</name>
+<type name="Mapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="level: Literal['TRACE', 'DEBUG', 'INFO', 'CONSOLE', 'HTML', 'WARN', 'ERROR'] = INFO">
+<name>level</name>
+<type name="Literal" typedoc="Literal">
+<type name="'TRACE'"/>
+<type name="'DEBUG'"/>
+<type name="'INFO'"/>
+<type name="'CONSOLE'"/>
+<type name="'HTML'"/>
+<type name="'WARN'"/>
+<type name="'ERROR'"/>
+</type>
+<default>INFO</default>
+</arg>
+</arguments>
+<doc>Logs the contents of the ``dictionary`` using the given ``level``.</doc>
+<shortdoc>Logs the contents of the ``dictionary`` using the given ``level``.</shortdoc>
+</kw>
+<kw name="Log List" lineno="549">
+<arguments repr="list_: Sequence, level: Literal['TRACE', 'DEBUG', 'INFO', 'CONSOLE', 'HTML', 'WARN', 'ERROR'] = INFO">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="level: Literal['TRACE', 'DEBUG', 'INFO', 'CONSOLE', 'HTML', 'WARN', 'ERROR'] = INFO">
+<name>level</name>
+<type name="Literal" typedoc="Literal">
+<type name="'TRACE'"/>
+<type name="'DEBUG'"/>
+<type name="'INFO'"/>
+<type name="'CONSOLE'"/>
+<type name="'HTML'"/>
+<type name="'WARN'"/>
+<type name="'ERROR'"/>
+</type>
+<default>INFO</default>
+</arg>
+</arguments>
+<doc>Logs contents of the ``list`` using the given ``level``.</doc>
+<shortdoc>Logs contents of the ``list`` using the given ``level``.</shortdoc>
+</kw>
+<kw name="Pop From Dictionary" lineno="644">
+<arguments repr="dictionary: MutableMapping, key: object, default: object = ">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: MutableMapping">
+<name>dictionary</name>
+<type name="MutableMapping" typedoc="Mapping"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="key: object">
+<name>key</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="default: object = ">
+<name>default</name>
+<type name="object" typedoc="object"/>
+<default/>
+</arg>
+</arguments>
+<returntype name="object" typedoc="object"/>
+<doc>Pops the given ``key`` from the ``dictionary`` and returns its value.
+
+The keyword fails if the given ``key`` cannot be found from the ``dictionary``
+by default. If optional ``default`` value is given, it will be returned instead.
+
+Example:
+| ${val}= | Pop From Dictionary | ${D3} | b |
+=&gt;
+| ${val} = 2
+| ${D3} = {'a': 1, 'c': 3}</doc>
+<shortdoc>Pops the given ``key`` from the ``dictionary`` and returns its value.</shortdoc>
+</kw>
+<kw name="Remove Duplicates" lineno="189">
+<arguments repr="list_: Sequence">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: Sequence">
+<name>list_</name>
+<type name="Sequence" typedoc="Sequence"/>
+</arg>
+</arguments>
+<returntype name="list" typedoc="list"/>
+<doc>Returns a list without duplicates based on the given ``list``.
+
+Creates and returns a new list that contains all items in the given
+list so that one item can appear only once. Order of the items in
+the new list is the same as in the original except for missing
+duplicates. Number of the removed duplicates is logged.</doc>
+<shortdoc>Returns a list without duplicates based on the given ``list``.</shortdoc>
+</kw>
+<kw name="Remove From Dictionary" lineno="620">
+<arguments repr="dictionary: MutableMapping, *keys: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: MutableMapping">
+<name>dictionary</name>
+<type name="MutableMapping" typedoc="Mapping"/>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*keys: object">
+<name>keys</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="MutableMapping" typedoc="Mapping"/>
+<doc>Removes the given ``keys`` from the ``dictionary``.
+
+If the given ``key`` does not exist in the ``dictionary``, it is ignored.
+
+Starting from Robot Framework 7.4, the modified dictionary is also returned.
+
+Example:
+| Remove From Dictionary | ${D3} | b | x | y |
+=&gt;
+| ${D3} = {'a': 1, 'c': 3}</doc>
+<shortdoc>Removes the given ``keys`` from the ``dictionary``.</shortdoc>
+</kw>
+<kw name="Remove From List" lineno="169">
+<arguments repr="list_: MutableSequence, index: int">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: MutableSequence">
+<name>list_</name>
+<type name="MutableSequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="index: int">
+<name>index</name>
+<type name="int" typedoc="integer"/>
+</arg>
+</arguments>
+<returntype name="object" typedoc="object"/>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.
+
+Index ``0`` means the first position, ``1`` the second and so on.
+Similarly, ``-1`` is the last position, ``-2`` the second last, and so on.
+Using an index that does not exist on the list causes an error.
+The index can be either an integer or a string that can be converted
+to an integer.
+
+Example:
+| ${x} = | Remove From List | ${L2} | 0 |
+=&gt;
+| ${x} = 'a'
+| ${L2} = ['b']</doc>
+<shortdoc>Removes and returns the value specified with an ``index`` from ``list``.</shortdoc>
+</kw>
+<kw name="Remove Values From List" lineno="148">
+<arguments repr="list_: MutableSequence, *values: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: MutableSequence">
+<name>list_</name>
+<type name="MutableSequence" typedoc="Sequence"/>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*values: object">
+<name>values</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="MutableSequence" typedoc="Sequence"/>
+<doc>Removes all occurrences of given ``values`` from ``list``.
+
+It is not an error if a value does not exist in the list at all.
+
+Starting from Robot Framework 7.4, the modified list is also returned.
+
+Example:
+| Remove Values From List | ${L4} | a | c | e | f |
+=&gt;
+| ${L4} = ['b', 'd']</doc>
+<shortdoc>Removes all occurrences of given ``values`` from ``list``.</shortdoc>
+</kw>
+<kw name="Reverse List" lineno="334">
+<arguments repr="list_: MutableSequence">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: MutableSequence">
+<name>list_</name>
+<type name="MutableSequence" typedoc="Sequence"/>
+</arg>
+</arguments>
+<returntype name="MutableSequence" typedoc="Sequence"/>
+<doc>Reverses the given list in place.
+
+Note that the given list is changed and nothing is returned. Use
+`Copy List` first, if you need to keep also the original order.
+
+Starting from Robot Framework 7.4, the reversed list is also returned.
+
+| Reverse List | ${L3} |
+=&gt;
+| ${L3} = ['c', 'b', 'a']</doc>
+<shortdoc>Reverses the given list in place.</shortdoc>
+</kw>
+<kw name="Set List Value" lineno="115">
+<arguments repr="list_: MutableSequence, index: int, value: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: MutableSequence">
+<name>list_</name>
+<type name="MutableSequence" typedoc="Sequence"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="index: int">
+<name>index</name>
+<type name="int" typedoc="integer"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="value: object">
+<name>value</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="MutableSequence" typedoc="Sequence"/>
+<doc>Sets the value of ``list`` specified by ``index`` to the given ``value``.
+
+Index ``0`` means the first position, ``1`` the second and so on.
+Similarly, ``-1`` is the last position, ``-2`` second last, and so on.
+Using an index that does not exist on the list causes an error.
+The index can be either an integer or a string that can be converted to
+an integer.
+
+Starting from Robot Framework 7.4, the modified list is also returned.
+
+Example:
+| Set List Value | ${L3} | 1  | xxx |
+| Set List Value | ${L3} | -1 | yyy |
+=&gt;
+| ${L3} = ['a', 'xxx', 'yyy']
+
+Starting from Robot Framework 6.1, it is also possible to use the native
+item assignment syntax. This is equivalent to the above:
+| ${L3}[1] =  | Set Variable | xxx |
+| ${L3}[-1] = | Set Variable | yyy |</doc>
+<shortdoc>Sets the value of ``list`` specified by ``index`` to the given ``value``.</shortdoc>
+</kw>
+<kw name="Set To Dictionary" lineno="582">
+<arguments repr="dictionary: MutableMapping, *key_value_pairs: object, **items: object">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="dictionary: MutableMapping">
+<name>dictionary</name>
+<type name="MutableMapping" typedoc="Mapping"/>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*key_value_pairs: object">
+<name>key_value_pairs</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="VAR_NAMED" required="false" repr="**items: object">
+<name>items</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="MutableMapping" typedoc="Mapping"/>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.
+
+If given items already exist in the dictionary, their values are updated.
+
+The modified dictionary is also returned.
+
+It is easiest to specify items using the ``name=value`` syntax:
+| Set To Dictionary | ${D1} | key=value | second=${2} |
+=&gt;
+| ${D1} = {'a': 1, 'key': 'value', 'second': 2}
+
+A limitation of the above syntax is that keys must be strings.
+That can be avoided by passing keys and values as separate arguments:
+| Set To Dictionary | ${D1} | key | value | ${2} | value 2 |
+=&gt;
+| ${D1} = {'a': 1, 'key': 'value', 2: 'value 2'}
+
+Starting from Robot Framework 6.1, it is also possible to use the native
+item assignment syntax. This is equivalent to the above:
+| ${D1}[key] =  | Set Variable | value |
+| ${D1}[${2}] = | Set Variable | value 2 |</doc>
+<shortdoc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</shortdoc>
+</kw>
+<kw name="Should Contain Match" lineno="1135">
+<arguments repr="list: Sequence | Mapping | Set, pattern: str, msg: str | None = None, case_insensitive: bool | None = None, whitespace_insensitive: bool | None = None, ignore_case: bool = False, ignore_whitespace: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list: Sequence | Mapping | Set">
+<name>list</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str">
+<name>pattern</name>
+<type name="str" typedoc="string"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="case_insensitive: bool | None = None">
+<name>case_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="whitespace_insensitive: bool | None = None">
+<name>whitespace_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_whitespace: bool = False">
+<name>ignore_whitespace</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if ``pattern`` is not found in ``list``.
+
+By default, pattern matching is similar to matching files in a shell
+and is case-sensitive and whitespace-sensitive. In the pattern syntax,
+``*`` matches to anything and ``?`` matches to any single character. You
+can also prepend ``glob=`` to your pattern to explicitly use this pattern
+matching behavior.
+
+If you prepend ``regexp=`` to your pattern, your pattern will be used
+according to the Python
+[http://docs.python.org/library/re.html|re module] regular expression
+syntax. Notice that the backslash character often used with regular
+expressions is an escape character in Robot Framework data and needs
+to be escaped with another backslash like ``regexp=\\d{6}``. See
+`BuiltIn.Should Match Regexp` for more details.
+
+Matching is case-sensitive by default, but that can be changed by giving
+the ``ignore_case`` argument a true value.
+This argument is new in Robot Framework 7.0, but with earlier versions
+it is possible to use ``case_insensitive`` for the same purpose.
+
+It is possible to ignore all whitespace by giving the ``ignore_whitespace``
+argument a true value. This argument is new in Robot Framework 7.0 as well,
+and with earlier versions it is possible to use ``whitespace_insensitive``.
+
+Notice that both ``case_insensitive`` and ``whitespace_insensitive``
+are considered deprecated. They will eventually be removed.
+
+Non-string values in lists are ignored when matching patterns.
+
+Use the ``msg`` argument to override the default error message.
+
+Examples:
+| Should Contain Match | ${list} | a*              | | | # Match strings beginning with 'a'. |
+| Should Contain Match | ${list} | regexp=a.*      | | | # Same as the above but with regexp. |
+| Should Contain Match | ${list} | regexp=\\d{6} | | | # Match strings containing six digits. |
+| Should Contain Match | ${list} | a*  | ignore_case=True       | | # Match strings beginning with 'a' or 'A'. |
+| Should Contain Match | ${list} | ab* | ignore_whitespace=yes  | | # Match strings beginning with 'ab' with possible whitespace ignored. |
+| Should Contain Match | ${list} | ab* | ignore_whitespace=true | ignore_case=true | # Same as the above but also ignore case. |</doc>
+<shortdoc>Fails if ``pattern`` is not found in ``list``.</shortdoc>
+</kw>
+<kw name="Should Not Contain Match" lineno="1197">
+<arguments repr="list: Sequence | Mapping | Set, pattern: str, msg: str | None = None, case_insensitive: bool | None = None, whitespace_insensitive: bool | None = None, ignore_case: bool = False, ignore_whitespace: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list: Sequence | Mapping | Set">
+<name>list</name>
+<type name="Union" union="true">
+<type name="Sequence" typedoc="Sequence"/>
+<type name="Mapping" typedoc="Mapping"/>
+<type name="Set" typedoc="set"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str">
+<name>pattern</name>
+<type name="str" typedoc="string"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="case_insensitive: bool | None = None">
+<name>case_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="whitespace_insensitive: bool | None = None">
+<name>whitespace_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_whitespace: bool = False">
+<name>ignore_whitespace</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<doc>Fails if ``pattern`` is found in ``list``.
+
+Exact opposite of `Should Contain Match` keyword. See that keyword
+for information about arguments and usage in general.</doc>
+<shortdoc>Fails if ``pattern`` is found in ``list``.</shortdoc>
+</kw>
+<kw name="Sort List" lineno="349">
+<arguments repr="list_: MutableSequence">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="list_: MutableSequence">
+<name>list_</name>
+<type name="MutableSequence" typedoc="Sequence"/>
+</arg>
+</arguments>
+<returntype name="MutableSequence" typedoc="Sequence"/>
+<doc>Sorts the given list in place.
+
+Sorting fails if items in the list are not comparable with each others.
+For example, sorting a list containing strings and numbers is not possible.
+
+Note that the given list is changed and nothing is returned. Use
+`Copy List` first, if you need to preserve the list also in the original
+order.
+
+Starting from Robot Framework 7.4, the sorted list is also returned.</doc>
+<shortdoc>Sorts the given list in place.</shortdoc>
+</kw>
+</keywords>
+<typedocs>
+<type name="boolean" type="Standard">
+<doc>Strings ``TRUE``, ``YES``, ``ON``, ``1`` and possible localization specific "true
+strings" are converted to Boolean ``True``, the empty string, strings ``FALSE``,
+``NO``, ``OFF`` and ``0`` and possibly localization specific "false strings"
+are converted to Boolean ``False``, and the string ``NONE`` is converted to
+the Python ``None`` object. Other strings and all other values are passed as-is,
+allowing keywords to handle them specially if needed. All string comparisons are
+case-insensitive.
+
+Examples: ``TRUE`` (converted to ``True``), ``off`` (converted to ``False``),
+``example`` (used as-is)
+</doc>
+<accepts>
+<type>string</type>
+<type>integer</type>
+<type>float</type>
+<type>None</type>
+</accepts>
+<usages>
+<usage>Copy Dictionary</usage>
+<usage>Copy List</usage>
+<usage>Dictionaries Should Be Equal</usage>
+<usage>Dictionary Should Contain Item</usage>
+<usage>Dictionary Should Contain Key</usage>
+<usage>Dictionary Should Contain Sub Dictionary</usage>
+<usage>Dictionary Should Contain Value</usage>
+<usage>Dictionary Should Not Contain Key</usage>
+<usage>Dictionary Should Not Contain Value</usage>
+<usage>Get Dictionary Items</usage>
+<usage>Get Dictionary Keys</usage>
+<usage>Get Dictionary Values</usage>
+<usage>Get Match Count</usage>
+<usage>Get Matches</usage>
+<usage>List Should Contain Sub List</usage>
+<usage>List Should Contain Value</usage>
+<usage>List Should Not Contain Duplicates</usage>
+<usage>List Should Not Contain Value</usage>
+<usage>Lists Should Be Equal</usage>
+<usage>Should Contain Match</usage>
+<usage>Should Not Contain Match</usage>
+</usages>
+</type>
+<type name="dictionary" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#dict|dictionary]
+literals. They are converted to actual dictionaries using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function. They can contain any values ``ast.literal_eval`` supports, including
+dictionaries and other collections.
+
+Any mapping is accepted and converted to a ``dict``.
+
+If the type has nested types like ``dict[str, int]``, items are converted
+to those types automatically. This in new in Robot Framework 6.0.
+
+Examples: ``{'a': 1, 'b': 2}``, ``{'key': 1, 'nested': {'key': 2}}``
+</doc>
+<accepts>
+<type>string</type>
+<type>Mapping</type>
+</accepts>
+<usages>
+<usage>Convert To Dictionary</usage>
+</usages>
+</type>
+<type name="integer" type="Standard">
+<doc>Conversion is done using Python's [https://docs.python.org/library/functions.html#int|int]
+built-in function. Floating point
+numbers are accepted only if they can be represented as integers exactly.
+For example, ``1.0`` is accepted and ``1.1`` is not.
+
+It is possible to use hexadecimal, octal and binary numbers by prefixing values
+with ``0x``, ``0o`` and ``0b``, respectively. Spaces and underscores can be used
+as visual separators for digit grouping purposes.
+
+Examples: ``42``, ``-1``, ``0b1010``, ``10 000 000``, ``0xBAD_C0FFEE``
+</doc>
+<accepts>
+<type>string</type>
+<type>float</type>
+</accepts>
+<usages>
+<usage>Count Values In List</usage>
+<usage>Get From List</usage>
+<usage>Get Index From List</usage>
+<usage>Get Match Count</usage>
+<usage>Get Slice From List</usage>
+<usage>Insert Into List</usage>
+<usage>Lists Should Be Equal</usage>
+<usage>Remove From List</usage>
+<usage>Set List Value</usage>
+</usages>
+</type>
+<type name="list" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#list|list]
+or [https://docs.python.org/library/stdtypes.html#tuple|tuple] literals.
+They are converted using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function and possible tuples converted further to lists. They can contain any
+values ``ast.literal_eval`` supports, including lists and other collections.
+
+If the argument is a list, it is used without conversion.
+Tuples and other sequences are converted to lists.
+
+If the type has nested types like ``list[int]``, items are converted
+to those types automatically.
+
+Examples: ``['one', 'two']``, ``[('one', 1), ('two', 2)]``
+
+Support to convert nested types is new in Robot Framework 6.0.
+Support for tuple literals is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+<type>Sequence</type>
+</accepts>
+<usages>
+<usage>Combine Lists</usage>
+<usage>Convert To List</usage>
+<usage>Get Dictionary Items</usage>
+<usage>Get Dictionary Keys</usage>
+<usage>Get Dictionary Values</usage>
+<usage>Get Matches</usage>
+<usage>Remove Duplicates</usage>
+</usages>
+</type>
+<type name="Literal" type="Standard">
+<doc>Only specified values are accepted. Values can be strings,
+integers, bytes, Booleans, enums and None, and used arguments
+are converted using the value type specific conversion logic.
+
+Strings are case, space, underscore and hyphen insensitive,
+but exact matches have precedence over normalized matches.
+</doc>
+<accepts>
+<type>Any</type>
+</accepts>
+<usages>
+<usage>Dictionaries Should Be Equal</usage>
+<usage>Dictionary Should Contain Item</usage>
+<usage>Dictionary Should Contain Key</usage>
+<usage>Dictionary Should Contain Sub Dictionary</usage>
+<usage>Dictionary Should Contain Value</usage>
+<usage>Dictionary Should Not Contain Key</usage>
+<usage>Dictionary Should Not Contain Value</usage>
+<usage>Get Index From List</usage>
+<usage>Get Slice From List</usage>
+<usage>Log Dictionary</usage>
+<usage>Log List</usage>
+</usages>
+</type>
+<type name="Mapping" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#dict|dictionary]
+literals. They are converted to actual dictionaries using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function. They can contain any values ``ast.literal_eval`` supports, including
+dictionaries and other collections.
+
+Any mapping is accepted without conversion. An exception is that if the type
+is ``MutableMapping``, immutable values are converted to ``dict``.
+
+If the type has nested types like ``Mapping[str, int]``, items are converted
+to those types automatically. This in new in Robot Framework 6.0.
+
+Examples: ``{'a': 1, 'b': 2}``, ``{'key': 1, 'nested': {'key': 2}}``
+</doc>
+<accepts>
+<type>string</type>
+<type>Mapping</type>
+</accepts>
+<usages>
+<usage>Combine Lists</usage>
+<usage>Copy Dictionary</usage>
+<usage>Dictionaries Should Be Equal</usage>
+<usage>Dictionary Should Contain Item</usage>
+<usage>Dictionary Should Contain Key</usage>
+<usage>Dictionary Should Contain Sub Dictionary</usage>
+<usage>Dictionary Should Contain Value</usage>
+<usage>Dictionary Should Not Contain Key</usage>
+<usage>Dictionary Should Not Contain Value</usage>
+<usage>Get Dictionary Items</usage>
+<usage>Get Dictionary Keys</usage>
+<usage>Get Dictionary Values</usage>
+<usage>Get From Dictionary</usage>
+<usage>Get Match Count</usage>
+<usage>Get Matches</usage>
+<usage>Keep In Dictionary</usage>
+<usage>List Should Contain Sub List</usage>
+<usage>List Should Contain Value</usage>
+<usage>List Should Not Contain Value</usage>
+<usage>Lists Should Be Equal</usage>
+<usage>Log Dictionary</usage>
+<usage>Pop From Dictionary</usage>
+<usage>Remove From Dictionary</usage>
+<usage>Set To Dictionary</usage>
+<usage>Should Contain Match</usage>
+<usage>Should Not Contain Match</usage>
+</usages>
+</type>
+<type name="None" type="Standard">
+<doc>String ``NONE`` (case-insensitive) and the empty string are converted to
+the Python ``None`` object. Other values cause an error.
+
+Converting the empty string is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+</accepts>
+<usages>
+<usage>Count Values In List</usage>
+<usage>Dictionaries Should Be Equal</usage>
+<usage>Dictionary Should Contain Item</usage>
+<usage>Dictionary Should Contain Key</usage>
+<usage>Dictionary Should Contain Sub Dictionary</usage>
+<usage>Dictionary Should Contain Value</usage>
+<usage>Dictionary Should Not Contain Key</usage>
+<usage>Dictionary Should Not Contain Value</usage>
+<usage>Get Index From List</usage>
+<usage>Get Match Count</usage>
+<usage>Get Matches</usage>
+<usage>Get Slice From List</usage>
+<usage>List Should Contain Sub List</usage>
+<usage>List Should Contain Value</usage>
+<usage>List Should Not Contain Duplicates</usage>
+<usage>List Should Not Contain Value</usage>
+<usage>Lists Should Be Equal</usage>
+<usage>Should Contain Match</usage>
+<usage>Should Not Contain Match</usage>
+</usages>
+</type>
+<type name="object" type="Standard">
+<doc>Any value is accepted. No conversion is done.
+</doc>
+<accepts>
+<type>Any</type>
+</accepts>
+<usages>
+<usage>Append To List</usage>
+<usage>Convert To Dictionary</usage>
+<usage>Convert To List</usage>
+<usage>Count Values In List</usage>
+<usage>Dictionary Should Contain Item</usage>
+<usage>Dictionary Should Contain Key</usage>
+<usage>Dictionary Should Contain Value</usage>
+<usage>Dictionary Should Not Contain Key</usage>
+<usage>Dictionary Should Not Contain Value</usage>
+<usage>Get Dictionary Items</usage>
+<usage>Get Dictionary Keys</usage>
+<usage>Get Dictionary Values</usage>
+<usage>Get From Dictionary</usage>
+<usage>Get From List</usage>
+<usage>Get Index From List</usage>
+<usage>Insert Into List</usage>
+<usage>Keep In Dictionary</usage>
+<usage>List Should Contain Value</usage>
+<usage>List Should Not Contain Value</usage>
+<usage>Pop From Dictionary</usage>
+<usage>Remove From Dictionary</usage>
+<usage>Remove From List</usage>
+<usage>Remove Values From List</usage>
+<usage>Set List Value</usage>
+<usage>Set To Dictionary</usage>
+</usages>
+</type>
+<type name="Sequence" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#list|list]
+or [https://docs.python.org/library/stdtypes.html#tuple|tuple] literals.
+They are converted to actual lists or tuples using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function. They can contain any values ``ast.literal_eval`` supports, including
+lists and other collections.
+
+Any sequence is accepted without conversion. An exception is that if the used
+type is ``MutableSequence``, immutable values are converted to lists.
+
+If the type has nested types like ``Sequence[int]``, items are converted
+to those types automatically.
+
+Examples: ``['one', 'two']``, ``(1, 2, 3)``
+
+Support to convert nested types is new in Robot Framework 6.0.
+Support for tuple literals is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+<type>Sequence</type>
+</accepts>
+<usages>
+<usage>Append To List</usage>
+<usage>Combine Lists</usage>
+<usage>Copy List</usage>
+<usage>Count Values In List</usage>
+<usage>Dictionaries Should Be Equal</usage>
+<usage>Get From List</usage>
+<usage>Get Index From List</usage>
+<usage>Get Match Count</usage>
+<usage>Get Matches</usage>
+<usage>Get Slice From List</usage>
+<usage>Insert Into List</usage>
+<usage>List Should Contain Sub List</usage>
+<usage>List Should Contain Value</usage>
+<usage>List Should Not Contain Duplicates</usage>
+<usage>List Should Not Contain Value</usage>
+<usage>Lists Should Be Equal</usage>
+<usage>Log List</usage>
+<usage>Remove Duplicates</usage>
+<usage>Remove From List</usage>
+<usage>Remove Values From List</usage>
+<usage>Reverse List</usage>
+<usage>Set List Value</usage>
+<usage>Should Contain Match</usage>
+<usage>Should Not Contain Match</usage>
+<usage>Sort List</usage>
+</usages>
+</type>
+<type name="set" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#set|set],
+[https://docs.python.org/library/stdtypes.html#list|list]
+or [https://docs.python.org/library/stdtypes.html#tuple|tuple]
+literals. They are converted using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function and possible lists and tuples converted further to sets. They can
+contain any values ``ast.literal_eval`` supports.
+
+If the argument is a set, it is used without conversion.
+Lists and other collection objects are converted to sets.
+
+If the type has nested types like ``set[int]``, items are converted
+to those types automatically.
+
+Examples: ``{1, 2, 3, 42}``, ``set()`` (an empty set)
+
+Support to convert nested types is new in Robot Framework 6.0.
+Support for list and tuple literals is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+<type>Collection</type>
+</accepts>
+<usages>
+<usage>Combine Lists</usage>
+<usage>Get Match Count</usage>
+<usage>Get Matches</usage>
+<usage>List Should Contain Sub List</usage>
+<usage>List Should Contain Value</usage>
+<usage>List Should Not Contain Value</usage>
+<usage>Lists Should Be Equal</usage>
+<usage>Should Contain Match</usage>
+<usage>Should Not Contain Match</usage>
+</usages>
+</type>
+<type name="string" type="Standard">
+<doc>All arguments are converted to Unicode strings.
+
+Most values are converted simply by using ``str(value)``. An exception is that
+bytes are mapped directly to Unicode code points with same ordinals. This means
+that, for example, ``b"hyv\xe4"`` becomes ``"hyvä"``.
+
+Converting bytes specially is new Robot Framework 7.4.
+</doc>
+<accepts>
+<type>Any</type>
+</accepts>
+<usages>
+<usage>Dictionaries Should Be Equal</usage>
+<usage>Dictionary Should Contain Item</usage>
+<usage>Dictionary Should Contain Key</usage>
+<usage>Dictionary Should Contain Sub Dictionary</usage>
+<usage>Dictionary Should Contain Value</usage>
+<usage>Dictionary Should Not Contain Key</usage>
+<usage>Dictionary Should Not Contain Value</usage>
+<usage>Get Match Count</usage>
+<usage>Get Matches</usage>
+<usage>List Should Contain Sub List</usage>
+<usage>List Should Contain Value</usage>
+<usage>List Should Not Contain Duplicates</usage>
+<usage>List Should Not Contain Value</usage>
+<usage>Lists Should Be Equal</usage>
+<usage>Should Contain Match</usage>
+<usage>Should Not Contain Match</usage>
+</usages>
+</type>
+<type name="tuple" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#tuple|tuple]
+or [https://docs.python.org/library/stdtypes.html#list|list] literals.
+They are converted using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function and possible lists converted further to tuples. They can contain any
+values ``ast.literal_eval`` supports, including tuples and other collections.
+
+If the argument is a tuple, it is used without conversion.
+Lists and other sequences are converted to tuples.
+
+If the type has nested types like ``tuple[str, int, int]``, items are converted
+to those types automatically.
+
+Examples: ``('one', 'two')``, ``(('one', 1), ('two', 2))``
+
+Support to convert nested types is new in Robot Framework 6.0.
+Support for list literals is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+<type>Sequence</type>
+</accepts>
+<usages>
+<usage>Get Dictionary Items</usage>
+</usages>
+</type>
+</typedocs>
+</keywordspec>

@@ -1,0 +1,1725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keywordspec name="String" type="LIBRARY" format="ROBOT" scope="GLOBAL" generated="2026-05-28T11:31:35+00:00" specversion="6" source="C:\Users\Lokesh\Documents\GitHub\Robot-Framework-Python\venv\Lib\site-packages\robot\libraries\String.py" lineno="39">
+<version>7.4.2</version>
+<doc>A library for string manipulation and verification.
+
+``String`` is Robot Framework's standard library for manipulating
+strings (e.g. `Replace String Using Regexp`, `Split To Lines`) and
+verifying their contents (e.g. `Should Be String`).
+
+In addition to strings, most of the keywords work also with bytes.
+Bytes support was heavily enhanced in Robot Framework 7.4.
+
+Following keywords from ``BuiltIn`` library can also be used with strings
+and bytes:
+
+- `Get Length`
+- `Length Should Be`
+- `Should (Not) Be Empty`
+- `Should (Not) Be Equal (As Strings/Integers/Numbers)`
+- `Should (Not) Match (Regexp)`
+- `Should (Not) Contain`
+- `Should (Not) Start With`
+- `Should (Not) End With`
+- `Convert To String`
+- `Convert To Bytes`</doc>
+<tags>
+</tags>
+<inits>
+</inits>
+<keywords>
+<kw name="Convert To Lower Case" lineno="67">
+<arguments repr="string: str | bytes">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Converts string to lower case.
+
+Uses Python's standard
+[https://docs.python.org/library/stdtypes.html#str.lower|lower()]
+method.
+
+Examples:
+| ${str1} = | Convert To Lower Case | ABC |
+| ${str2} = | Convert To Lower Case | 1A2c3D |
+| Should Be Equal | ${str1} | abc |
+| Should Be Equal | ${str2} | 1a2c3d |
+
+If this keyword is used with bytes, only ASCII characters are lower cased.</doc>
+<shortdoc>Converts string to lower case.</shortdoc>
+</kw>
+<kw name="Convert To Title Case" lineno="101">
+<arguments repr="string: str | bytes, exclude: str | bytes | list[str | bytes] | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="exclude: str | bytes | list[str | bytes] | None = None">
+<name>exclude</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+<type name="list" typedoc="list">
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</type>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Converts string to title case.
+
+Uses the following algorithm:
+
+- Split the string to words from whitespace characters (spaces,
+  newlines, etc.).
+- Exclude words that are not all lower case. This preserves,
+  for example, "OK" and "iPhone".
+- Exclude also words listed in the optional ``exclude`` argument.
+- Title case the first alphabetical character of each word that has
+  not been excluded.
+- Join all words together so that original whitespace is preserved.
+
+Explicitly excluded words can be given as a list or as a string with
+words separated by a comma and an optional space. Excluded words are
+actually considered to be regular expression patterns, so it is
+possible to use something like "example[.!?]?" to match the word
+"example" on it own and also if followed by ".", "!" or "?".
+See `BuiltIn.Should Match Regexp` for more information about Python
+regular expression syntax in general and how to use it in Robot
+Framework data in particular.
+
+Examples:
+| ${str1} = | Convert To Title Case | hello, world!     |
+| ${str2} = | Convert To Title Case | it's an OK iPhone | exclude=a, an, the |
+| ${str3} = | Convert To Title Case | distance is 1 km. | exclude=is, km.? |
+| Should Be Equal | ${str1} | Hello, World! |
+| Should Be Equal | ${str2} | It's an OK iPhone |
+| Should Be Equal | ${str3} | Distance is 1 km. |
+
+The reason this keyword does not use Python's standard
+[https://docs.python.org/library/stdtypes.html#str.title|title()]
+method is that it can yield undesired results, for example, if
+strings contain upper case letters or special characters like
+apostrophes. It would, for example, convert "it's an OK iPhone"
+to "It'S An Ok Iphone".
+
+If this keyword is used with bytes, only ASCII characters are title cased.
+Bytes support is new in Robot Framework 7.4.</doc>
+<shortdoc>Converts string to title case.</shortdoc>
+</kw>
+<kw name="Convert To Upper Case" lineno="84">
+<arguments repr="string: str | bytes">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Converts string to upper case.
+
+Uses Python's standard
+[https://docs.python.org/library/stdtypes.html#str.upper|upper()]
+method.
+
+Examples:
+| ${str1} = | Convert To Upper Case | abc |
+| ${str2} = | Convert To Upper Case | 1a2C3d |
+| Should Be Equal | ${str1} | ABC |
+| Should Be Equal | ${str2} | 1A2C3D |
+
+If this keyword is used with bytes, only ASCII characters are upper cased.</doc>
+<shortdoc>Converts string to upper case.</shortdoc>
+</kw>
+<kw name="Decode Bytes To String" lineno="203">
+<arguments repr="bytes: bytes, encoding: str, errors: str = strict">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="bytes: bytes">
+<name>bytes</name>
+<type name="bytes" typedoc="bytes"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="encoding: str">
+<name>encoding</name>
+<type name="str" typedoc="string"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="errors: str = strict">
+<name>errors</name>
+<type name="str" typedoc="string"/>
+<default>strict</default>
+</arg>
+</arguments>
+<returntype name="str" typedoc="string"/>
+<doc>Decodes the given ``bytes`` to a string using the given ``encoding``.
+
+``errors`` argument controls what to do if decoding some bytes fails.
+All values accepted by ``decode`` method in Python are valid, but in
+practice the following values are most useful:
+
+- ``strict``: fail if characters cannot be decoded (default)
+- ``ignore``: ignore characters that cannot be decoded
+- ``replace``: replace characters that cannot be decoded with
+  a replacement character
+
+Examples:
+| ${string} = | Decode Bytes To String | ${bytes} | UTF-8 |
+| ${string} = | Decode Bytes To String | ${bytes} | ASCII | errors=ignore |
+
+Use `Encode String To Bytes` if you need to convert strings to bytes,
+and `Convert To String` in ``BuiltIn`` if you need to
+convert arbitrary objects to strings.</doc>
+<shortdoc>Decodes the given ``bytes`` to a string using the given ``encoding``.</shortdoc>
+</kw>
+<kw name="Encode String To Bytes" lineno="175">
+<arguments repr="string: str, encoding: str, errors: str = strict">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str">
+<name>string</name>
+<type name="str" typedoc="string"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="encoding: str">
+<name>encoding</name>
+<type name="str" typedoc="string"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="errors: str = strict">
+<name>errors</name>
+<type name="str" typedoc="string"/>
+<default>strict</default>
+</arg>
+</arguments>
+<returntype name="bytes" typedoc="bytes"/>
+<doc>Encodes the given ``string`` to bytes using the given ``encoding``.
+
+``errors`` argument controls what to do if encoding some characters fails.
+All values accepted by ``encode`` method in Python are valid, but in
+practice the following values are most useful:
+
+- ``strict``: fail if characters cannot be encoded (default)
+- ``ignore``: ignore characters that cannot be encoded
+- ``replace``: replace characters that cannot be encoded with
+  a replacement character
+
+Examples:
+| ${bytes} = | Encode String To Bytes | ${string} | UTF-8 |
+| ${bytes} = | Encode String To Bytes | ${string} | ASCII | errors=ignore |
+
+Use `Convert To Bytes` in ``BuiltIn`` if you want to create bytes based
+on character or integer sequences. Use `Decode Bytes To String` if you
+need to convert bytes to strings and `Convert To String`
+in ``BuiltIn`` if you need to convert arbitrary objects to strings.</doc>
+<shortdoc>Encodes the given ``string`` to bytes using the given ``encoding``.</shortdoc>
+</kw>
+<kw name="Fetch From Left" lineno="766">
+<arguments repr="string: str | bytes, marker: str | bytes">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="marker: str | bytes">
+<name>marker</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Returns contents of the ``string`` before the first occurrence of ``marker``.
+
+If the ``marker`` is not found, whole string is returned.
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well. This is new in Robot Framework 7.4.
+
+See also `Fetch From Right`, `Split String` and `Split String From Right`.</doc>
+<shortdoc>Returns contents of the ``string`` before the first occurrence of ``marker``.</shortdoc>
+</kw>
+<kw name="Fetch From Right" lineno="784">
+<arguments repr="string: str | bytes, marker: str | bytes">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="marker: str | bytes">
+<name>marker</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.
+
+If the ``marker`` is not found, whole string is returned.
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well. This is new in Robot Framework 7.4.
+
+See also `Fetch From Left`, `Split String` and `Split String From Right`.</doc>
+<shortdoc>Returns contents of the ``string`` after the last occurrence of ``marker``.</shortdoc>
+</kw>
+<kw name="Format String" lineno="230">
+<arguments repr="template: str | bytes, /, *positional: object, **named: object">
+<arg kind="POSITIONAL_ONLY" required="true" repr="template: str | bytes">
+<name>template</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_ONLY_MARKER" required="false" repr="/">
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*positional: object">
+<name>positional</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="VAR_NAMED" required="false" repr="**named: object">
+<name>named</name>
+<type name="object" typedoc="object"/>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.
+
+The template can be either be a string or an absolute path to
+an existing file. In the latter case the file is read and its contents
+are used as the template. If the template file contains non-ASCII
+characters, it must be encoded using UTF-8.
+
+The template is formatted using Python's
+[https://docs.python.org/library/string.html#format-string-syntax|format
+string syntax]. Placeholders are marked using ``{}`` with possible
+field name and format specification inside. Literal curly braces
+can be inserted by doubling them like `{{` and `}}`.
+
+Examples:
+| ${to} = | Format String | To: {} &lt;{}&gt;                    | ${user}      | ${email} |
+| ${to} = | Format String | To: {name} &lt;{email}&gt;           | name=${name} | email=${email} |
+| ${to} = | Format String | To: {user.name} &lt;{user.email}&gt; | user=${user} |
+| ${xx} = | Format String | {:*^30}                        | centered     |
+| ${yy} = | Format String | {0:{width}{base}}              | ${42}        | base=X | width=10 |
+| ${zz} = | Format String | ${CURDIR}/template.txt         | positional   | named=value |
+
+Prior to Robot Framework 7.1, possible equal signs in the template string
+needed to be escaped with a backslash like ``x\={}`.
+
+Support for bytes is new in Robot Framework 7.4.</doc>
+<shortdoc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</shortdoc>
+</kw>
+<kw name="Generate Random String" lineno="802">
+<arguments repr="length: int | str = 8, chars: str = [LETTERS][NUMBERS]">
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="length: int | str = 8">
+<name>length</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="str" typedoc="string"/>
+</type>
+<default>8</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="chars: str = [LETTERS][NUMBERS]">
+<name>chars</name>
+<type name="str" typedoc="string"/>
+<default>[LETTERS][NUMBERS]</default>
+</arg>
+</arguments>
+<returntype name="str" typedoc="string"/>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.
+
+``length`` can be given as a number, a string representation of a number,
+or as a range of numbers, such as ``5-10``. When a range of values is given
+the range will be selected by random within the range.
+
+The population sequence ``chars`` contains the characters to use
+when generating the random string. It can contain any
+characters, and it is possible to use special markers
+explained in the table below:
+
+|  = Marker =   |               = Explanation =                   |
+| ``[LOWER]``   | Lowercase ASCII characters from ``a`` to ``z``. |
+| ``[UPPER]``   | Uppercase ASCII characters from ``A`` to ``Z``. |
+| ``[LETTERS]`` | Lowercase and uppercase ASCII characters.       |
+| ``[NUMBERS]`` | Numbers from 0 to 9.                            |
+| ``[ARABIC]``  | Arabic characters from U+0600 to U+06FF (inclusive). |
+| ``[POLISH]``  | ASCII characters and Polish diacritical signs.  |
+
+Examples:
+| ${ret} = | Generate Random String |
+| ${low} = | Generate Random String | 12 | [LOWER]         |
+| ${bin} = | Generate Random String | 8  | 01              |
+| ${hex} = | Generate Random String | 4  | [NUMBERS]abcdef |
+| ${rnd} = | Generate Random String | 5-10 | # Generates a string 5 to 10 characters long |
+
+Giving ``length`` as a range of values is new in Robot Framework 5.0.
+Support for markers ``[POLISH]`` and ``[ARABIC]`` is new in Robot Framework 7.4.</doc>
+<shortdoc>Generates a string with a desired ``length`` from the given ``chars``.</shortdoc>
+</kw>
+<kw name="Get Line" lineno="329">
+<arguments repr="string: str | bytes, line_number: int">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="line_number: int">
+<name>line_number</name>
+<type name="int" typedoc="integer"/>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Returns the specified line from the given ``string``.
+
+Line numbering starts from 0, and it is possible to use
+negative indices to refer to lines from the end. The line is
+returned without the newline character.
+
+Examples:
+| ${first} =    | Get Line | ${string} | 0  |
+| ${2nd last} = | Get Line | ${string} | -2 |
+
+Use `Split To Lines` if all lines are needed.</doc>
+<shortdoc>Returns the specified line from the given ``string``.</shortdoc>
+</kw>
+<kw name="Get Line Count" lineno="291">
+<arguments repr="string: str | bytes">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+</arguments>
+<returntype name="int" typedoc="integer"/>
+<doc>Returns and logs the number of lines in the given string.</doc>
+<shortdoc>Returns and logs the number of lines in the given string.</shortdoc>
+</kw>
+<kw name="Get Lines Containing String" lineno="344">
+<arguments repr="string: str | bytes, pattern: str | bytes, case_insensitive: bool | None = None, ignore_case: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str | bytes">
+<name>pattern</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="case_insensitive: bool | None = None">
+<name>case_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Returns lines of the given ``string`` that contain the ``pattern``.
+
+The ``pattern`` is always considered to be a normal string, not a glob
+or regexp pattern. A line matches if the ``pattern`` is found anywhere
+on it.
+
+The match is case-sensitive by default, but that can be changed by
+giving ``ignore_case`` a true value. This option is new in Robot
+Framework 7.0, but with older versions it is possible to use the
+nowadays deprecated ``case_insensitive`` argument.
+
+Lines are returned as a string with lines joined together with
+a newline. Possible trailing newline is never returned. The number
+of matching lines is automatically logged.
+
+Examples:
+| ${lines} = | Get Lines Containing String | ${result} | An example |
+| ${ret} =   | Get Lines Containing String | ${ret} | FAIL | ignore_case=True |
+
+See `Get Lines Matching Pattern` and `Get Lines Matching Regexp`
+if you need more complex pattern matching.
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well.
+
+Bytes support is new in Robot Framework 7.4.</doc>
+<shortdoc>Returns lines of the given ``string`` that contain the ``pattern``.</shortdoc>
+</kw>
+<kw name="Get Lines Matching Pattern" lineno="386">
+<arguments repr="string: str | bytes, pattern: str | bytes, case_insensitive: bool | None = None, ignore_case: bool = False">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str | bytes">
+<name>pattern</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="case_insensitive: bool | None = None">
+<name>case_insensitive</name>
+<type name="Union" union="true">
+<type name="bool" typedoc="boolean"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="ignore_case: bool = False">
+<name>ignore_case</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Returns lines of the given ``string`` that match the ``pattern``.
+
+The ``pattern`` is a _glob pattern_ where:
+| ``*``        | matches everything |
+| ``?``        | matches any single character |
+| ``[chars]``  | matches any character inside square brackets (e.g. ``[abc]`` matches either ``a``, ``b`` or ``c``) |
+| ``[!chars]`` | matches any character not inside square brackets |
+
+A line matches only if it matches the ``pattern`` fully.
+
+The match is case-sensitive by default, but that can be changed by
+giving ``ignore_case`` a true value. This option is new in Robot
+Framework 7.0, but with older versions it is possible to use the
+nowadays deprecated ``case_insensitive`` argument.
+
+Lines are returned as a string with lines joined together with
+a newline. Possible trailing newline is never returned. The number
+of matching lines is automatically logged.
+
+Examples:
+| ${lines} = | Get Lines Matching Pattern | ${result} | Wild???? example |
+| ${ret} = | Get Lines Matching Pattern | ${ret} | FAIL: * | ignore_case=True |
+
+See `Get Lines Matching Regexp` if you need more complex
+patterns and `Get Lines Containing String` if searching
+literal strings is enough.
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well.
+
+Bytes support is new in Robot Framework 7.4.</doc>
+<shortdoc>Returns lines of the given ``string`` that match the ``pattern``.</shortdoc>
+</kw>
+<kw name="Get Lines Matching Regexp" lineno="436">
+<arguments repr="string: str | bytes, pattern: str | bytes, partial_match: bool = False, flags: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str | bytes">
+<name>pattern</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="partial_match: bool = False">
+<name>partial_match</name>
+<type name="bool" typedoc="boolean"/>
+<default>False</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="flags: str | None = None">
+<name>flags</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Returns lines of the given ``string`` that match the regexp ``pattern``.
+
+See `BuiltIn.Should Match Regexp` for more information about
+Python regular expression syntax in general and how to use it
+in Robot Framework data in particular.
+
+Lines match only if they match the pattern fully by default, but
+partial matching can be enabled by giving the ``partial_match``
+argument a true value.
+
+If the pattern is empty, it matches only empty lines by default.
+When partial matching is enabled, empty pattern matches all lines.
+
+Possible flags altering how the expression is parsed (e.g. ``re.IGNORECASE``,
+``re.VERBOSE``) can be given using the ``flags`` argument (e.g.
+``flags=IGNORECASE | VERBOSE``) or embedded to the pattern (e.g.
+``(?ix)pattern``).
+
+Lines are returned as one string concatenated back together with
+newlines. Possible trailing newline is never returned. The
+number of matching lines is automatically logged.
+
+Examples:
+| ${lines} = | Get Lines Matching Regexp | ${result} | Reg\\w{3} example |
+| ${lines} = | Get Lines Matching Regexp | ${result} | Reg\\w{3} example | partial_match=true |
+| ${ret} =   | Get Lines Matching Regexp | ${ret}    | (?i)FAIL: .* |
+| ${ret} =   | Get Lines Matching Regexp | ${ret}    | FAIL: .* | flags=IGNORECASE |
+
+See `Get Lines Matching Pattern` and `Get Lines Containing String` if you
+do not need the full regular expression powers (and complexity).
+
+The ``flags`` argument is new in Robot Framework 6.0.
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well. This is new in Robot Framework 7.4.</doc>
+<shortdoc>Returns lines of the given ``string`` that match the regexp ``pattern``.</shortdoc>
+</kw>
+<kw name="Get Regexp Matches" lineno="495">
+<arguments repr="string: str | bytes, pattern: str | bytes, *groups: int | str, flags: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str | bytes">
+<name>pattern</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*groups: int | str">
+<name>groups</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="str" typedoc="string"/>
+</type>
+</arg>
+<arg kind="NAMED_ONLY" required="false" repr="flags: str | None = None">
+<name>flags</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="list" typedoc="list">
+<type name="str" typedoc="string"/>
+</type>
+<type name="list" typedoc="list">
+<type name="tuple" typedoc="tuple">
+<type name="str" typedoc="string"/>
+<type name="..."/>
+</type>
+</type>
+<type name="list" typedoc="list">
+<type name="bytes" typedoc="bytes"/>
+</type>
+<type name="list" typedoc="list">
+<type name="tuple" typedoc="tuple">
+<type name="bytes" typedoc="bytes"/>
+<type name="..."/>
+</type>
+</type>
+</returntype>
+<doc>Returns a list of all non-overlapping matches in the given string.
+
+``string`` is the string to find matches from and ``pattern`` is the
+regular expression. See `BuiltIn.Should Match Regexp` for more
+information about Python regular expression syntax in general and how
+to use it in Robot Framework data in particular.
+
+If no groups are used, the returned list contains full matches. If one
+group is used, the list contains only contents of that group. If
+multiple groups are used, the list contains tuples that contain
+individual group contents. All groups can be given as indexes (starting
+from 1) and named groups also as names.
+
+Possible flags altering how the expression is parsed (e.g. ``re.IGNORECASE``,
+``re.MULTILINE``) can be given using the ``flags`` argument (e.g.
+``flags=IGNORECASE | MULTILINE``) or embedded to the pattern (e.g.
+``(?im)pattern``).
+
+Examples:
+| ${no match} =    | Get Regexp Matches | the string | xxx     |
+| ${matches} =     | Get Regexp Matches | the string | t..     |
+| ${matches} =     | Get Regexp Matches | the string | T..     | flags=IGNORECASE |
+| ${one group} =   | Get Regexp Matches | the string | t(..)   | 1 |
+| ${named group} = | Get Regexp Matches | the string | t(?P&lt;name&gt;..) | name |
+| ${two groups} =  | Get Regexp Matches | the string | t(.)(.) | 1 | 2 |
+=&gt;
+| ${no match} = []
+| ${matches} = ['the', 'tri']
+| ${one group} = ['he', 'ri']
+| ${named group} = ['he', 'ri']
+| ${two groups} = [('h', 'e'), ('r', 'i')]
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well. This is new in Robot Framework 7.4.
+
+The ``flags`` argument is new in Robot Framework 6.0.</doc>
+<shortdoc>Returns a list of all non-overlapping matches in the given string.</shortdoc>
+</kw>
+<kw name="Get Substring" lineno="858">
+<arguments repr="string: str | bytes, start: int | Literal[''] | None = 0, end: int | Literal[''] | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="start: int | Literal[''] | None = 0">
+<name>start</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="Literal" typedoc="Literal">
+<type name="''"/>
+</type>
+<type name="None" typedoc="None"/>
+</type>
+<default>0</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="end: int | Literal[''] | None = None">
+<name>end</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="Literal" typedoc="Literal">
+<type name="''"/>
+</type>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Returns a substring from ``start`` index to ``end`` index.
+
+The ``start`` index is inclusive and ``end`` is exclusive.
+Indexing starts from 0, and it is possible to use
+negative indices to refer to characters from the end.
+
+Examples:
+| ${ignore first} = | Get Substring | ${string} | 1  |    |
+| ${ignore last} =  | Get Substring | ${string} | 0  | -1 |
+| ${5th to 10th} =  | Get Substring | ${string} | 4  | 10 |
+| ${first two} =    | Get Substring | ${string} | 0  | 1  |
+| ${last two} =     | Get Substring | ${string} | -2 |    |
+
+Default value with ``start`` is new in Robot Framework 7.4.</doc>
+<shortdoc>Returns a substring from ``start`` index to ``end`` index.</shortdoc>
+</kw>
+<kw name="Remove String" lineno="632">
+<arguments repr="string: str | bytes, *removables: str | bytes">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*removables: str | bytes">
+<name>removables</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Removes all ``removables`` from the given ``string``.
+
+``removables`` are used as literal strings. Each removable will be
+matched to a temporary string from which preceding removables have
+been already removed. See second example below.
+
+Use `Remove String Using Regexp` if more powerful pattern matching is
+needed. If only a certain number of matches should be removed,
+`Replace String` or `Replace String Using Regexp` can be used.
+
+A modified version of the string is returned and the original
+string is not altered.
+
+Examples:
+| ${str} =        | Remove String | Robot Framework | work   |
+| Should Be Equal | ${str}        | Robot Frame     |
+| ${str} =        | Remove String | Robot Framework | o | bt |
+| Should Be Equal | ${str}        | R Framewrk      |
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well.
+
+Bytes support is new in Robot Framework 7.4.</doc>
+<shortdoc>Removes all ``removables`` from the given ``string``.</shortdoc>
+</kw>
+<kw name="Remove String Using Regexp" lineno="665">
+<arguments repr="string: str | bytes, *patterns: str | bytes, flags: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="VAR_POSITIONAL" required="false" repr="*patterns: str | bytes">
+<name>patterns</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="NAMED_ONLY" required="false" repr="flags: str | None = None">
+<name>flags</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Removes ``patterns`` from the given ``string``.
+
+This keyword is otherwise identical to `Remove String`, but
+the ``patterns`` to search for are considered to be a regular
+expression. See `Replace String Using Regexp` for more information
+about the regular expression syntax. That keyword can also be
+used if there is a need to remove only a certain number of
+occurrences.
+
+Possible flags altering how the expression is parsed (e.g. ``re.IGNORECASE``,
+``re.MULTILINE``) can be given using the ``flags`` argument (e.g.
+``flags=IGNORECASE | MULTILINE``) or embedded to the pattern (e.g.
+``(?im)pattern``).
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well.
+
+The ``flags`` argument is new in Robot Framework 6.0.
+Bytes support is new in Robot Framework 7.4.</doc>
+<shortdoc>Removes ``patterns`` from the given ``string``.</shortdoc>
+</kw>
+<kw name="Replace String" lineno="551">
+<arguments repr="string: str | bytes, search_for: str | bytes, replace_with: str | bytes, count: int = -1">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="search_for: str | bytes">
+<name>search_for</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="replace_with: str | bytes">
+<name>replace_with</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="count: int = -1">
+<name>count</name>
+<type name="int" typedoc="integer"/>
+<default>-1</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.
+
+``search_for`` is used as a literal string. See `Replace String
+Using Regexp` if more powerful pattern matching is needed.
+If you need to just remove a string see `Remove String`.
+
+If the optional argument ``count`` is given, only that many
+occurrences from left are replaced. Negative ``count`` means
+that all occurrences are replaced (default behaviour) and zero
+means that nothing is done.
+
+A modified version of the string is returned and the original
+string is not altered.
+
+Examples:
+| ${str} =        | Replace String | Hello, world!  | world | tellus   |
+| Should Be Equal | ${str}         | Hello, tellus! |       |          |
+| ${str} =        | Replace String | Hello, world!  | l     | ${EMPTY} | count=1 |
+| Should Be Equal | ${str}         | Helo, world!   |       |          |
+
+If the first argument is bytes, the following two arguments are automatically
+converted to bytes as well. This is new in Robot Framework 7.4.</doc>
+<shortdoc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</shortdoc>
+</kw>
+<kw name="Replace String Using Regexp" lineno="586">
+<arguments repr="string: str | bytes, pattern: str | bytes, replace_with: str | bytes, count: int = -1, flags: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="pattern: str | bytes">
+<name>pattern</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="replace_with: str | bytes">
+<name>replace_with</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="count: int = -1">
+<name>count</name>
+<type name="int" typedoc="integer"/>
+<default>-1</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="flags: str | None = None">
+<name>flags</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Replaces ``pattern`` in the given ``string`` with ``replace_with``.
+
+This keyword is otherwise identical to `Replace String`, but
+the ``pattern`` to search for is considered to be a regular
+expression.  See `BuiltIn.Should Match Regexp` for more
+information about Python regular expression syntax in general
+and how to use it in Robot Framework data in particular.
+
+Possible flags altering how the expression is parsed (e.g. ``re.IGNORECASE``,
+``re.MULTILINE``) can be given using the ``flags`` argument (e.g.
+``flags=IGNORECASE | MULTILINE``) or embedded to the pattern (e.g.
+``(?im)pattern``).
+
+If you need to just remove a string see `Remove String Using Regexp`.
+
+Examples:
+| ${str} = | Replace String Using Regexp | ${str} | 20\\d\\d-\\d\\d-\\d\\d | &lt;DATE&gt; |
+| ${str} = | Replace String Using Regexp | ${str} | (Hello|Hi) | ${EMPTY} | count=1 |
+
+If the first argument is bytes, the following two arguments are automatically
+converted to bytes as well. This is new in Robot Framework 7.4.
+
+The ``flags`` argument is new in Robot Framework 6.0.</doc>
+<shortdoc>Replaces ``pattern`` in the given ``string`` with ``replace_with``.</shortdoc>
+</kw>
+<kw name="Should Be Byte String" lineno="948">
+<arguments repr="item: object, msg: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="item: object">
+<name>item</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<doc>Fails if the given ``item`` is not a byte string.
+
+Use `Should Be String` if you want to verify the ``item`` is a string.
+
+The default error message can be overridden with the optional ``msg`` argument.</doc>
+<shortdoc>Fails if the given ``item`` is not a byte string.</shortdoc>
+</kw>
+<kw name="Should Be Lower Case" lineno="958">
+<arguments repr="string: str | bytes, msg: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<doc>Fails if the given ``string`` is not in lower case.
+
+For example, ``'string'`` and ``'with specials!'`` would pass, and
+``'String'``, ``''`` and ``' '`` would fail.
+
+The default error message can be overridden with the optional
+``msg`` argument.
+
+See also `Should Be Upper Case` and `Should Be Title Case`.</doc>
+<shortdoc>Fails if the given ``string`` is not in lower case.</shortdoc>
+</kw>
+<kw name="Should Be String" lineno="924">
+<arguments repr="item: object, msg: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="item: object">
+<name>item</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<doc>Fails if the given ``item`` is not a string.
+
+The default error message can be overridden with the optional ``msg`` argument.</doc>
+<shortdoc>Fails if the given ``item`` is not a string.</shortdoc>
+</kw>
+<kw name="Should Be Title Case" lineno="986">
+<arguments repr="string: str | bytes, msg: str | None = None, exclude: str | bytes | list[str | bytes] | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="exclude: str | bytes | list[str | bytes] | None = None">
+<name>exclude</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+<type name="list" typedoc="list">
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</type>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<doc>Fails if given ``string`` is not title.
+
+``string`` is a title cased string if there is at least one upper case
+letter in each word.
+
+For example, ``'This Is Title'`` and ``'OK, Give Me My iPhone'``
+would pass. ``'all words lower'`` and ``'Word In lower'`` would fail.
+
+This logic changed in Robot Framework 4.0 to be compatible with
+`Convert to Title Case`. See `Convert to Title Case` for title case
+algorithm and reasoning.
+
+The default error message can be overridden with the optional
+``msg`` argument.
+
+Words can be explicitly excluded with the optional ``exclude`` argument.
+
+Explicitly excluded words can be given as a list or as a string with
+words separated by a comma and an optional space. Excluded words are
+actually considered to be regular expression patterns, so it is
+possible to use something like "example[.!?]?" to match the word
+"example" on it own and also if followed by ".", "!" or "?".
+See `BuiltIn.Should Match Regexp` for more information about Python
+regular expression syntax in general and how to use it in Robot
+Framework data in particular.
+
+See also `Should Be Upper Case` and `Should Be Lower Case`.</doc>
+<shortdoc>Fails if given ``string`` is not title.</shortdoc>
+</kw>
+<kw name="Should Be Unicode String" lineno="940">
+<arguments repr="item: object, msg: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="item: object">
+<name>item</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<doc>Fails if the given ``item`` is not a Unicode string.
+
+On Python 3 this keyword behaves exactly the same way `Should Be String`.
+That keyword should be used instead and this keyword will be deprecated.</doc>
+<shortdoc>Fails if the given ``item`` is not a Unicode string.</shortdoc>
+</kw>
+<kw name="Should Be Upper Case" lineno="972">
+<arguments repr="string: str | bytes, msg: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<doc>Fails if the given ``string`` is not in upper case.
+
+For example, ``'STRING'`` and ``'WITH SPECIALS!'`` would pass, and
+``'String'``, ``''`` and ``' '`` would fail.
+
+The default error message can be overridden with the optional
+``msg`` argument.
+
+See also `Should Be Title Case` and `Should Be Lower Case`.</doc>
+<shortdoc>Fails if the given ``string`` is not in upper case.</shortdoc>
+</kw>
+<kw name="Should Not Be String" lineno="932">
+<arguments repr="item: object, msg: str | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="item: object">
+<name>item</name>
+<type name="object" typedoc="object"/>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="msg: str | None = None">
+<name>msg</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<doc>Fails if the given ``item`` is a string.
+
+The default error message can be overridden with the optional ``msg`` argument.</doc>
+<shortdoc>Fails if the given ``item`` is a string.</shortdoc>
+</kw>
+<kw name="Split String" lineno="695">
+<arguments repr="string: str | bytes, separator: str | bytes | None = None, max_split: int = -1">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="separator: str | bytes | None = None">
+<name>separator</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="max_split: int = -1">
+<name>max_split</name>
+<type name="int" typedoc="integer"/>
+<default>-1</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="list" typedoc="list">
+<type name="str" typedoc="string"/>
+</type>
+<type name="list" typedoc="list">
+<type name="bytes" typedoc="bytes"/>
+</type>
+</returntype>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.
+
+If a ``separator`` is not given, any whitespace string is a
+separator. In that case also possible consecutive whitespace
+as well as leading and trailing whitespace is ignored.
+
+Split words are returned as a list. If the optional
+``max_split`` is given, at most ``max_split`` splits are done, and
+the returned list will have maximum ``max_split + 1`` elements.
+
+Examples:
+| @{words} =         | Split String | ${string} |
+| @{words} =         | Split String | ${string} | ,${SPACE} |
+| ${pre} | ${post} = | Split String | ${string} | ::    | 1 |
+
+See `Split String From Right` if you want to start splitting
+from right, and `Fetch From Left` and `Fetch From Right` if
+you only want to get first/last part of the string.
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well. This is new in Robot Framework 7.4.</doc>
+<shortdoc>Splits the ``string`` using ``separator`` as a delimiter string.</shortdoc>
+</kw>
+<kw name="Split String From Right" lineno="728">
+<arguments repr="string: str | bytes, separator: str | bytes | None = None, max_split: int = -1">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="separator: str | bytes | None = None">
+<name>separator</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="max_split: int = -1">
+<name>max_split</name>
+<type name="int" typedoc="integer"/>
+<default>-1</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="list" typedoc="list">
+<type name="str" typedoc="string"/>
+</type>
+<type name="list" typedoc="list">
+<type name="bytes" typedoc="bytes"/>
+</type>
+</returntype>
+<doc>Splits the ``string`` using ``separator`` starting from right.
+
+Same as `Split String`, but splitting is started from right. This has
+an effect only when ``max_split`` is given.
+
+Examples:
+| ${first} | ${rest} = | Split String            | ${string} | - | 1 |
+| ${rest}  | ${last} = | Split String From Right | ${string} | - | 1 |
+
+If the first argument is bytes, the second argument is automatically
+converted to bytes as well. This is new in Robot Framework 7.4.</doc>
+<shortdoc>Splits the ``string`` using ``separator`` starting from right.</shortdoc>
+</kw>
+<kw name="Split String To Characters" lineno="751">
+<arguments repr="string: str | bytes">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="list" typedoc="list">
+<type name="str" typedoc="string"/>
+</type>
+<type name="list" typedoc="list">
+<type name="bytes" typedoc="bytes"/>
+</type>
+</returntype>
+<doc>Splits the given ``string`` to characters.
+
+Example:
+| @{characters} = | Split String To Characters | ${string} |
+
+Bytes support is new in Robot Framework 7.4.</doc>
+<shortdoc>Splits the given ``string`` to characters.</shortdoc>
+</kw>
+<kw name="Split To Lines" lineno="297">
+<arguments repr="string: str | bytes, start: int | Literal[''] | None = 0, end: int | Literal[''] | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="start: int | Literal[''] | None = 0">
+<name>start</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="Literal" typedoc="Literal">
+<type name="''"/>
+</type>
+<type name="None" typedoc="None"/>
+</type>
+<default>0</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="end: int | Literal[''] | None = None">
+<name>end</name>
+<type name="Union" union="true">
+<type name="int" typedoc="integer"/>
+<type name="Literal" typedoc="Literal">
+<type name="''"/>
+</type>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="list" typedoc="list">
+<type name="str" typedoc="string"/>
+</type>
+<type name="list" typedoc="list">
+<type name="bytes" typedoc="bytes"/>
+</type>
+</returntype>
+<doc>Splits the given string to lines.
+
+It is possible to get only a selection of lines from ``start``
+to ``end`` so that ``start`` index is inclusive and ``end`` is
+exclusive. Line numbering starts from 0, and it is possible to
+use negative indices to refer to lines from the end.
+
+Lines are returned without the newlines. The number of
+returned lines is automatically logged.
+
+Examples:
+| @{lines} =        | Split To Lines | ${manylines} |        |
+| @{ignore first} = | Split To Lines | ${manylines} | 1      |
+| @{ignore last} =  | Split To Lines | ${manylines} | end=-1 |
+| @{5th to 10th} =  | Split To Lines | ${manylines} | 4      | 10 |
+| @{first two} =    | Split To Lines | ${manylines} | end=1  |
+| @{last two} =     | Split To Lines | ${manylines} | -2     |
+
+Use `Get Line` if you only need to get a single line.</doc>
+<shortdoc>Splits the given string to lines.</shortdoc>
+</kw>
+<kw name="Strip String" lineno="883">
+<arguments repr="string: str | bytes, mode: Literal['left', 'right', 'both', 'none'] = both, characters: str | bytes | None = None">
+<arg kind="POSITIONAL_OR_NAMED" required="true" repr="string: str | bytes">
+<name>string</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</type>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="mode: Literal['left', 'right', 'both', 'none'] = both">
+<name>mode</name>
+<type name="Literal" typedoc="Literal">
+<type name="'left'"/>
+<type name="'right'"/>
+<type name="'both'"/>
+<type name="'none'"/>
+</type>
+<default>both</default>
+</arg>
+<arg kind="POSITIONAL_OR_NAMED" required="false" repr="characters: str | bytes | None = None">
+<name>characters</name>
+<type name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+<type name="None" typedoc="None"/>
+</type>
+<default>None</default>
+</arg>
+</arguments>
+<returntype name="Union" union="true">
+<type name="str" typedoc="string"/>
+<type name="bytes" typedoc="bytes"/>
+</returntype>
+<doc>Remove leading and/or trailing whitespaces from the given string.
+
+``mode`` is either ``left`` to remove leading characters, ``right`` to
+remove trailing characters, ``both`` (default) to remove the
+characters from both sides of the string or ``none`` to return the
+unmodified string.
+
+If the optional ``characters`` is given, it must be a string and the
+characters in the string will be stripped in the string. Please note,
+that this is not a substring to be removed but a list of characters,
+see the example below.
+
+Examples:
+| ${stripped}=  | Strip String | ${SPACE}Hello${SPACE} | |
+| Should Be Equal | ${stripped} | Hello | |
+| ${stripped}=  | Strip String | ${SPACE}Hello${SPACE} | mode=left |
+| Should Be Equal | ${stripped} | Hello${SPACE} | |
+| ${stripped}=  | Strip String | aabaHelloeee | characters=abe |
+| Should Be Equal | ${stripped} | Hello | |
+
+If the first argument is bytes, the ``characters`` argument is automatically
+converted to bytes as well.
+
+Bytes support is new in Robot Framework 7.4.</doc>
+<shortdoc>Remove leading and/or trailing whitespaces from the given string.</shortdoc>
+</kw>
+</keywords>
+<typedocs>
+<type name="boolean" type="Standard">
+<doc>Strings ``TRUE``, ``YES``, ``ON``, ``1`` and possible localization specific "true
+strings" are converted to Boolean ``True``, the empty string, strings ``FALSE``,
+``NO``, ``OFF`` and ``0`` and possibly localization specific "false strings"
+are converted to Boolean ``False``, and the string ``NONE`` is converted to
+the Python ``None`` object. Other strings and all other values are passed as-is,
+allowing keywords to handle them specially if needed. All string comparisons are
+case-insensitive.
+
+Examples: ``TRUE`` (converted to ``True``), ``off`` (converted to ``False``),
+``example`` (used as-is)
+</doc>
+<accepts>
+<type>string</type>
+<type>integer</type>
+<type>float</type>
+<type>None</type>
+</accepts>
+<usages>
+<usage>Get Lines Containing String</usage>
+<usage>Get Lines Matching Pattern</usage>
+<usage>Get Lines Matching Regexp</usage>
+</usages>
+</type>
+<type name="bytes" type="Standard">
+<doc>Strings are converted to bytes so that each Unicode code point
+below 256 is directly mapped to a matching byte. Higher code
+points are not allowed. Robot Framework's ``\xHH`` escape syntax is
+convenient with bytes having non-printable values.
+
+Examples: ``good``, ``hyvä`` (same as ``hyv\xE4``), ``\x00`` (the null byte)
+
+Integers and sequences of integers are converted to matching bytes directly.
+They must be in range 0-255.
+
+Examples: ``0`` (converted to the null byte), ``[82, 70]`` (converted to ``RF``)
+
+Support for integers and sequences of integers is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+<type>bytearray</type>
+<type>Sequence</type>
+<type>integer</type>
+</accepts>
+<usages>
+<usage>Convert To Lower Case</usage>
+<usage>Convert To Title Case</usage>
+<usage>Convert To Upper Case</usage>
+<usage>Decode Bytes To String</usage>
+<usage>Encode String To Bytes</usage>
+<usage>Fetch From Left</usage>
+<usage>Fetch From Right</usage>
+<usage>Format String</usage>
+<usage>Get Line</usage>
+<usage>Get Line Count</usage>
+<usage>Get Lines Containing String</usage>
+<usage>Get Lines Matching Pattern</usage>
+<usage>Get Lines Matching Regexp</usage>
+<usage>Get Regexp Matches</usage>
+<usage>Get Substring</usage>
+<usage>Remove String</usage>
+<usage>Remove String Using Regexp</usage>
+<usage>Replace String</usage>
+<usage>Replace String Using Regexp</usage>
+<usage>Should Be Lower Case</usage>
+<usage>Should Be Title Case</usage>
+<usage>Should Be Upper Case</usage>
+<usage>Split String</usage>
+<usage>Split String From Right</usage>
+<usage>Split String To Characters</usage>
+<usage>Split To Lines</usage>
+<usage>Strip String</usage>
+</usages>
+</type>
+<type name="integer" type="Standard">
+<doc>Conversion is done using Python's [https://docs.python.org/library/functions.html#int|int]
+built-in function. Floating point
+numbers are accepted only if they can be represented as integers exactly.
+For example, ``1.0`` is accepted and ``1.1`` is not.
+
+It is possible to use hexadecimal, octal and binary numbers by prefixing values
+with ``0x``, ``0o`` and ``0b``, respectively. Spaces and underscores can be used
+as visual separators for digit grouping purposes.
+
+Examples: ``42``, ``-1``, ``0b1010``, ``10 000 000``, ``0xBAD_C0FFEE``
+</doc>
+<accepts>
+<type>string</type>
+<type>float</type>
+</accepts>
+<usages>
+<usage>Generate Random String</usage>
+<usage>Get Line</usage>
+<usage>Get Line Count</usage>
+<usage>Get Regexp Matches</usage>
+<usage>Get Substring</usage>
+<usage>Replace String</usage>
+<usage>Replace String Using Regexp</usage>
+<usage>Split String</usage>
+<usage>Split String From Right</usage>
+<usage>Split To Lines</usage>
+</usages>
+</type>
+<type name="list" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#list|list]
+or [https://docs.python.org/library/stdtypes.html#tuple|tuple] literals.
+They are converted using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function and possible tuples converted further to lists. They can contain any
+values ``ast.literal_eval`` supports, including lists and other collections.
+
+If the argument is a list, it is used without conversion.
+Tuples and other sequences are converted to lists.
+
+If the type has nested types like ``list[int]``, items are converted
+to those types automatically.
+
+Examples: ``['one', 'two']``, ``[('one', 1), ('two', 2)]``
+
+Support to convert nested types is new in Robot Framework 6.0.
+Support for tuple literals is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+<type>Sequence</type>
+</accepts>
+<usages>
+<usage>Convert To Title Case</usage>
+<usage>Get Regexp Matches</usage>
+<usage>Should Be Title Case</usage>
+<usage>Split String</usage>
+<usage>Split String From Right</usage>
+<usage>Split String To Characters</usage>
+<usage>Split To Lines</usage>
+</usages>
+</type>
+<type name="Literal" type="Standard">
+<doc>Only specified values are accepted. Values can be strings,
+integers, bytes, Booleans, enums and None, and used arguments
+are converted using the value type specific conversion logic.
+
+Strings are case, space, underscore and hyphen insensitive,
+but exact matches have precedence over normalized matches.
+</doc>
+<accepts>
+<type>Any</type>
+</accepts>
+<usages>
+<usage>Get Substring</usage>
+<usage>Split To Lines</usage>
+<usage>Strip String</usage>
+</usages>
+</type>
+<type name="None" type="Standard">
+<doc>String ``NONE`` (case-insensitive) and the empty string are converted to
+the Python ``None`` object. Other values cause an error.
+
+Converting the empty string is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+</accepts>
+<usages>
+<usage>Convert To Title Case</usage>
+<usage>Get Lines Containing String</usage>
+<usage>Get Lines Matching Pattern</usage>
+<usage>Get Lines Matching Regexp</usage>
+<usage>Get Regexp Matches</usage>
+<usage>Get Substring</usage>
+<usage>Remove String Using Regexp</usage>
+<usage>Replace String Using Regexp</usage>
+<usage>Should Be Byte String</usage>
+<usage>Should Be Lower Case</usage>
+<usage>Should Be String</usage>
+<usage>Should Be Title Case</usage>
+<usage>Should Be Unicode String</usage>
+<usage>Should Be Upper Case</usage>
+<usage>Should Not Be String</usage>
+<usage>Split String</usage>
+<usage>Split String From Right</usage>
+<usage>Split To Lines</usage>
+<usage>Strip String</usage>
+</usages>
+</type>
+<type name="object" type="Standard">
+<doc>Any value is accepted. No conversion is done.
+</doc>
+<accepts>
+<type>Any</type>
+</accepts>
+<usages>
+<usage>Format String</usage>
+<usage>Should Be Byte String</usage>
+<usage>Should Be String</usage>
+<usage>Should Be Unicode String</usage>
+<usage>Should Not Be String</usage>
+</usages>
+</type>
+<type name="string" type="Standard">
+<doc>All arguments are converted to Unicode strings.
+
+Most values are converted simply by using ``str(value)``. An exception is that
+bytes are mapped directly to Unicode code points with same ordinals. This means
+that, for example, ``b"hyv\xe4"`` becomes ``"hyvä"``.
+
+Converting bytes specially is new Robot Framework 7.4.
+</doc>
+<accepts>
+<type>Any</type>
+</accepts>
+<usages>
+<usage>Convert To Lower Case</usage>
+<usage>Convert To Title Case</usage>
+<usage>Convert To Upper Case</usage>
+<usage>Decode Bytes To String</usage>
+<usage>Encode String To Bytes</usage>
+<usage>Fetch From Left</usage>
+<usage>Fetch From Right</usage>
+<usage>Format String</usage>
+<usage>Generate Random String</usage>
+<usage>Get Line</usage>
+<usage>Get Line Count</usage>
+<usage>Get Lines Containing String</usage>
+<usage>Get Lines Matching Pattern</usage>
+<usage>Get Lines Matching Regexp</usage>
+<usage>Get Regexp Matches</usage>
+<usage>Get Substring</usage>
+<usage>Remove String</usage>
+<usage>Remove String Using Regexp</usage>
+<usage>Replace String</usage>
+<usage>Replace String Using Regexp</usage>
+<usage>Should Be Byte String</usage>
+<usage>Should Be Lower Case</usage>
+<usage>Should Be String</usage>
+<usage>Should Be Title Case</usage>
+<usage>Should Be Unicode String</usage>
+<usage>Should Be Upper Case</usage>
+<usage>Should Not Be String</usage>
+<usage>Split String</usage>
+<usage>Split String From Right</usage>
+<usage>Split String To Characters</usage>
+<usage>Split To Lines</usage>
+<usage>Strip String</usage>
+</usages>
+</type>
+<type name="tuple" type="Standard">
+<doc>Strings must be Python [https://docs.python.org/library/stdtypes.html#tuple|tuple]
+or [https://docs.python.org/library/stdtypes.html#list|list] literals.
+They are converted using the
+[https://docs.python.org/library/ast.html#ast.literal_eval|ast.literal_eval]
+function and possible lists converted further to tuples. They can contain any
+values ``ast.literal_eval`` supports, including tuples and other collections.
+
+If the argument is a tuple, it is used without conversion.
+Lists and other sequences are converted to tuples.
+
+If the type has nested types like ``tuple[str, int, int]``, items are converted
+to those types automatically.
+
+Examples: ``('one', 'two')``, ``(('one', 1), ('two', 2))``
+
+Support to convert nested types is new in Robot Framework 6.0.
+Support for list literals is new in Robot Framework 7.4.
+</doc>
+<accepts>
+<type>string</type>
+<type>Sequence</type>
+</accepts>
+<usages>
+<usage>Get Regexp Matches</usage>
+</usages>
+</type>
+</typedocs>
+</keywordspec>
