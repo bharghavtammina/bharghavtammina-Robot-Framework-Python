@@ -8,4 +8,4 @@ if (-not (Test-Path $robot)) {
     exit 1
 }
 
-& $robot --outputdir (Join-Path $root "results") (Join-Path $root "automations")
+& $robot --outputdir (Join-Path $root "results") (Join-Path $root "tests\poc")

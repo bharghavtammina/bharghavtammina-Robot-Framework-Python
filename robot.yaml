@@ -1,5 +1,5 @@
 # Robot Framework project config (RF 6.1+)
 paths:
-  - automations
+  - tests/poc
 outputdir: results
 consolewidth: 120

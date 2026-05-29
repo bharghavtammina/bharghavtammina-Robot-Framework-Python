@@ -2,6 +2,7 @@
 .venv/
 venv/
 env/
+env/
 ENV/
 
 # Python cache/compiled files
@@ -17,6 +18,8 @@ report.html
 
 # Test artifacts
 results/
+geckodriver*.log
+*.log
 
 # IDE/local files
 .vscode/
