@@ -32,3 +32,6 @@ Auto-split SeleniumLibrary notes (category-wise):
 Full installed library reference pack:
 - `full_reference/` (HTML + XML per library)
 - `full_reference/markdown_split/README.md`
+
+JavaScript commands (used inside `Execute Javascript`):
+- `javascript/README.md`
