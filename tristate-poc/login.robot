@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    Tristate POC: log in to Traumasoft Transunit.
 Library          SeleniumLibrary
-Library          ../libraries/helpers.py
 
 *** Variables ***
 ${BASE_URL}     https://transunit.traumasoft.com
@@ -11,8 +10,6 @@ ${BROWSER}      chrome
 
 *** Tasks ***
 Login To Transunit
-    ${when}=    Get Run Timestamp
-    Log    Transunit login started at ${when}    console=yes
     Open Transunit Login Page
     Login With Transunit User
     Wait Until Location Is Not    ${BASE_URL}/
