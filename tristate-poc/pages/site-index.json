@@ -1,0 +1,1732 @@
+{
+  "base_url": "https://transunit.traumasoft.com",
+  "home": {
+    "folder": "00-after-login",
+    "section": "Home",
+    "label": "After login landing",
+    "url": "https://transunit.traumasoft.com/main.php?a=user:account",
+    "title": "My Account",
+    "headings": [],
+    "buttons": [
+      "Billing",
+      "Human Resources",
+      "Payroll",
+      "Reporting"
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "search_input",
+        "id": "search_input",
+        "placeholder": "Search",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "user",
+        "id": "user",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "password",
+        "name": "pass",
+        "id": "pass",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "password",
+        "name": "password2",
+        "id": "password2",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "first_name",
+        "id": "first_name",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "last_name",
+        "id": "last_name",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "country",
+        "id": "country",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "street",
+        "id": "street",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "address2",
+        "id": "address2",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "city",
+        "id": "city",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "state",
+        "id": "state",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "zip",
+        "id": "zip_code",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "ethnicity_id",
+        "id": "ethnicity_id",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "gender",
+        "id": "gender",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "veteran",
+        "id": "veteran",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "name": "user_veteran_status[]",
+        "id": "",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "disability",
+        "id": "disability",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "textarea",
+        "type": "textarea",
+        "name": "disability_accommodation",
+        "id": "",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "fuel_pin",
+        "id": "fuel_pin",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "email_address",
+        "id": "email_address",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "email2",
+        "id": "email2",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "mobile_phone",
+        "id": "mobile_phone",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "mobile_phone_carrier_id",
+        "id": "mobile_phone_carrier_id",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "allow_sms",
+        "id": "allow_sms",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "allow_external_email",
+        "id": "allow_external_email",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "home_phone",
+        "id": "home_phone",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "pager_num",
+        "id": "pager_num",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "office_phone",
+        "id": "office_phone",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "office_phone_ext",
+        "id": "office_phone_ext",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "fax",
+        "id": "fax",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "name": "phonelist_hide",
+        "id": "phonelist_hide",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "allow_push_notifications",
+        "id": "allow_push_notifications",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "emergency_name",
+        "id": "emergency_name",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "emergency_relationship",
+        "id": "emergency_relationship",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "emergency_country",
+        "id": "emergency_country",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "emergency_address",
+        "id": "emergency_address",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "emergency_city",
+        "id": "emergency_city",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "emergency_state",
+        "id": "emergency_state",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "emergency_zipcode",
+        "id": "emergency_zipcode",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "emergency_email",
+        "id": "emergency_email",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": "emergency_phone",
+        "id": "emergency_phone",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "select",
+        "type": "select-one",
+        "name": "notify_nextday_schedule",
+        "id": "notify_nextday_schedule",
+        "placeholder": "",
+        "label": ""
+      },
+      {
+        "tag": "input",
+        "type": "submit",
+        "name": "Submit2",
+        "id": "",
+        "placeholder": "",
+        "label": ""
+      }
+    ],
+    "links_on_page": [
+      {
+        "text": "Create / Edit Signature",
+        "url": "https://transunit.traumasoft.com/main.php?a=user:account#"
+      },
+      {
+        "text": "user  /  account",
+        "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+      },
+      {
+        "text": "billing  /  workflow / main",
+        "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+      },
+      {
+        "text": "forms  /  anonymous reports main",
+        "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+      },
+      {
+        "text": "payroll  /  discrepancy report",
+        "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+      },
+      {
+        "text": "reportbuilder  /  payroll",
+        "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+      },
+      {
+        "text": "reporting  /  calltype groups / main",
+        "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+      },
+      {
+        "text": "reporting  /  cost center groups / main",
+        "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+      },
+      {
+        "text": "reporting  /  kaiser / main",
+        "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+      },
+      {
+        "text": "reporting  /  payor groups / main",
+        "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+      },
+      {
+        "text": "reporting  /  home",
+        "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+      },
+      {
+        "text": "reporting  /  dashboard",
+        "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+      },
+      {
+        "text": "reporting  /  config",
+        "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+      }
+    ],
+    "table_count": 7,
+    "form_count": 1,
+    "visited": true,
+    "note": ""
+  },
+  "pages": [
+    {
+      "folder": "dispatch-page",
+      "section": "Dispatch",
+      "label": "(no direct links in menu flyout for this user)",
+      "url": "https://transunit.traumasoft.com/#menu-dispatch",
+      "title": "",
+      "headings": [],
+      "buttons": [],
+      "inputs": [],
+      "links_on_page": [],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": false,
+      "note": "No flyout links for this menu section."
+    },
+    {
+      "folder": "payroll-discrepancy_report",
+      "section": "Payroll",
+      "label": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report",
+      "title": "Discrepancy Report",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting",
+        "TransUnit EMS [AMB-2] (B) All"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "query_type",
+          "id": "query_type_date_range",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "query_type",
+          "id": "query_type_pay_period",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "start_date",
+          "id": "start_date",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "end_date",
+          "id": "end_date",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "employee",
+          "id": "employee",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "discrepancy_type",
+          "id": "discrepancy_type",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "submit",
+          "name": "submit_date",
+          "id": "submit_date",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report#"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 5,
+      "form_count": 1,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "payroll-reportbuilder-payroll",
+      "section": "Payroll",
+      "label": "reportbuilder  /  payroll",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll",
+      "title": "Traumasoft: Transunit",
+      "headings": [
+        "Payroll Reports"
+      ],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting",
+        "TransUnit EMS [AMB-2] (B) All"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "Reset Form",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll#"
+        }
+      ],
+      "table_count": 3,
+      "form_count": 1,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "system-mgt-hc-en-us",
+      "section": "System Mgt",
+      "label": "hc / en-us",
+      "url": "https://traumasoft.zendesk.com/hc/en-us",
+      "title": "",
+      "headings": [],
+      "buttons": [],
+      "inputs": [],
+      "links_on_page": [],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": false,
+      "note": "External menu target."
+    },
+    {
+      "folder": "my-portal-user-account",
+      "section": "My Portal",
+      "label": "user  /  account",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account",
+      "title": "",
+      "headings": [],
+      "buttons": [],
+      "inputs": [],
+      "links_on_page": [],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": false,
+      "note": "Same URL as an earlier page; see that folder for full capture."
+    },
+    {
+      "folder": "my-portal-login-php",
+      "section": "My Portal",
+      "label": "login.php",
+      "url": "https://transunit.traumasoft.com/login.php?action=logout",
+      "title": "",
+      "headings": [],
+      "buttons": [],
+      "inputs": [],
+      "links_on_page": [],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": false,
+      "note": "Logout skipped."
+    },
+    {
+      "folder": "billing-workflow-main",
+      "section": "Billing",
+      "label": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main",
+      "title": "Billing Workflow",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting",
+        "Search",
+        "All",
+        "Validate",
+        "Auto Validate",
+        "Unvalidate",
+        "Worked",
+        "View Problems",
+        "Define Filter",
+        "Columns",
+        "Export to CSV"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "",
+          "id": "app_view_workflowFilter",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "app_view_startDate",
+          "placeholder": "mm/dd/yyyy",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "app_view_endDate",
+          "placeholder": "mm/dd/yyyy",
+          "label": ""
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "",
+          "id": "app_view_FilterType",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "",
+          "id": "app_view_limitTrips",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "number",
+          "name": "",
+          "id": "app_view_limitValue",
+          "placeholder": "1000",
+          "label": ""
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "",
+          "id": "app_view_otherActions",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "",
+          "id": "cb_workflow_grid_Grid",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "label": "Page No."
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main#"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 5,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "forms-anonymous_reports_main",
+      "section": "Forms",
+      "label": "forms  /  anonymous reports main",
+      "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main",
+      "title": "Anonymous Reports",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main#"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 7,
+      "form_count": 5,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "reporting-calltype_groups-main",
+      "section": "Reporting",
+      "label": "reporting  /  calltype groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main",
+      "title": "Call Type Groups (For Reporting)",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting",
+        "Save"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "",
+          "id": "hierarchy_profile",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "hierarchy_profile_name",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "hierarchy_profile_abbr",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "",
+          "id": "hierarchy_profile_callTypes",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main#"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "reporting-cost_center_groups-main",
+      "section": "Reporting",
+      "label": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main",
+      "title": "Cost Center Groups (For Reporting)",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main#"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 5,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "reporting-kaiser-main",
+      "section": "Reporting",
+      "label": "reporting  /  kaiser / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main",
+      "title": "Traumasoft: Transunit",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "reporting-payor_groups-main",
+      "section": "Reporting",
+      "label": "reporting  /  payor groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main",
+      "title": "Payor Groups (For Reporting)",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main#"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 5,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "reporting-home",
+      "section": "Reporting",
+      "label": "reporting  /  home",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:home",
+      "title": "Reporting",
+      "headings": [],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting",
+        "Search",
+        "Manage Filtersets",
+        "Manage Background Reports"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "application_Tree_Container_QuickSearch",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "output",
+          "id": "application_Header_Output_output_print",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "output",
+          "id": "application_Header_Output_output_excal",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "output",
+          "id": "application_Header_Output_output_pdf",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "output",
+          "id": "application_Header_Output_output_screen",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "",
+          "id": "output_new_window",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "",
+          "id": "sql_only",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "reporting-dashboard",
+      "section": "Reporting",
+      "label": "reporting  /  dashboard",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard",
+      "title": "Traumasoft: Transunit",
+      "headings": [
+        "My Dashboards",
+        "Shared Dashboards"
+      ],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting",
+        "Add Widget",
+        "Edit Layout"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    },
+    {
+      "folder": "reporting-config",
+      "section": "Reporting",
+      "label": "reporting  /  config",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:config",
+      "title": "Reporting Config",
+      "headings": [
+        "Automatic Reports",
+        "Background Reports"
+      ],
+      "buttons": [
+        "Billing",
+        "Human Resources",
+        "Payroll",
+        "Reporting",
+        "Save Configs"
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "search_input",
+          "id": "search_input",
+          "placeholder": "Search",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "",
+          "id": "config_generalTab_checkbox_FormElement",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "config_generalTab_input_FormElement",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "config_generalTab_input2_FormElement",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "links_on_page": [
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config#"
+        },
+        {
+          "text": "user  /  account",
+          "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+        },
+        {
+          "text": "billing  /  workflow / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+        },
+        {
+          "text": "forms  /  anonymous reports main",
+          "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+        },
+        {
+          "text": "payroll  /  discrepancy report",
+          "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+        },
+        {
+          "text": "reportbuilder  /  payroll",
+          "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+        },
+        {
+          "text": "reporting  /  calltype groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+        },
+        {
+          "text": "reporting  /  cost center groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+        },
+        {
+          "text": "reporting  /  kaiser / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+        },
+        {
+          "text": "reporting  /  payor groups / main",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+        },
+        {
+          "text": "reporting  /  home",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+        },
+        {
+          "text": "reporting  /  dashboard",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+        },
+        {
+          "text": "reporting  /  config",
+          "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+        }
+      ],
+      "table_count": 0,
+      "form_count": 0,
+      "visited": true,
+      "note": ""
+    }
+  ],
+  "menu_links": [
+    {
+      "section": "Dispatch",
+      "label": "(no direct links in menu flyout for this user)",
+      "url": "https://transunit.traumasoft.com/#menu-dispatch",
+      "external": false
+    },
+    {
+      "section": "Payroll",
+      "label": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report",
+      "external": false
+    },
+    {
+      "section": "Payroll",
+      "label": "reportbuilder  /  payroll",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll",
+      "external": false
+    },
+    {
+      "section": "System Mgt",
+      "label": "hc / en-us",
+      "url": "https://traumasoft.zendesk.com/hc/en-us",
+      "external": true
+    },
+    {
+      "section": "My Portal",
+      "label": "user  /  account",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account",
+      "external": false
+    },
+    {
+      "section": "My Portal",
+      "label": "login.php",
+      "url": "https://transunit.traumasoft.com/login.php?action=logout",
+      "external": false
+    },
+    {
+      "section": "Billing",
+      "label": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main",
+      "external": false
+    },
+    {
+      "section": "Forms",
+      "label": "forms  /  anonymous reports main",
+      "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main",
+      "external": false
+    },
+    {
+      "section": "Reporting",
+      "label": "reporting  /  calltype groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main",
+      "external": false
+    },
+    {
+      "section": "Reporting",
+      "label": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main",
+      "external": false
+    },
+    {
+      "section": "Reporting",
+      "label": "reporting  /  kaiser / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main",
+      "external": false
+    },
+    {
+      "section": "Reporting",
+      "label": "reporting  /  payor groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main",
+      "external": false
+    },
+    {
+      "section": "Reporting",
+      "label": "reporting  /  home",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:home",
+      "external": false
+    },
+    {
+      "section": "Reporting",
+      "label": "reporting  /  dashboard",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard",
+      "external": false
+    },
+    {
+      "section": "Reporting",
+      "label": "reporting  /  config",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:config",
+      "external": false
+    }
+  ]
+}

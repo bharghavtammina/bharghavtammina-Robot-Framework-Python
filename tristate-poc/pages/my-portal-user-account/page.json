@@ -1,0 +1,15 @@
+{
+  "folder": "my-portal-user-account",
+  "section": "My Portal",
+  "label": "user  /  account",
+  "url": "https://transunit.traumasoft.com/main.php?a=user:account",
+  "title": "",
+  "headings": [],
+  "buttons": [],
+  "inputs": [],
+  "links_on_page": [],
+  "table_count": 0,
+  "form_count": 0,
+  "visited": false,
+  "note": "Same URL as an earlier page; see that folder for full capture."
+}

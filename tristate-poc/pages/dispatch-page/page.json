@@ -1,0 +1,15 @@
+{
+  "folder": "dispatch-page",
+  "section": "Dispatch",
+  "label": "(no direct links in menu flyout for this user)",
+  "url": "https://transunit.traumasoft.com/#menu-dispatch",
+  "title": "",
+  "headings": [],
+  "buttons": [],
+  "inputs": [],
+  "links_on_page": [],
+  "table_count": 0,
+  "form_count": 0,
+  "visited": false,
+  "note": "No flyout links for this menu section."
+}

@@ -1,0 +1,139 @@
+{
+  "folder": "payroll-discrepancy_report",
+  "section": "Payroll",
+  "label": "payroll  /  discrepancy report",
+  "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report",
+  "title": "Discrepancy Report",
+  "headings": [],
+  "buttons": [
+    "Billing",
+    "Human Resources",
+    "Payroll",
+    "Reporting",
+    "TransUnit EMS [AMB-2] (B) All"
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "search_input",
+      "id": "search_input",
+      "placeholder": "Search",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "query_type",
+      "id": "query_type_date_range",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "query_type",
+      "id": "query_type_pay_period",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "start_date",
+      "id": "start_date",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "end_date",
+      "id": "end_date",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "employee",
+      "id": "employee",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "discrepancy_type",
+      "id": "discrepancy_type",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "submit",
+      "name": "submit_date",
+      "id": "submit_date",
+      "placeholder": "",
+      "label": ""
+    }
+  ],
+  "links_on_page": [
+    {
+      "text": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report#"
+    },
+    {
+      "text": "user  /  account",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+    },
+    {
+      "text": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+    },
+    {
+      "text": "forms  /  anonymous reports main",
+      "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+    },
+    {
+      "text": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+    },
+    {
+      "text": "reportbuilder  /  payroll",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+    },
+    {
+      "text": "reporting  /  calltype groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+    },
+    {
+      "text": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+    },
+    {
+      "text": "reporting  /  kaiser / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+    },
+    {
+      "text": "reporting  /  payor groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+    },
+    {
+      "text": "reporting  /  home",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+    },
+    {
+      "text": "reporting  /  dashboard",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+    },
+    {
+      "text": "reporting  /  config",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+    }
+  ],
+  "table_count": 5,
+  "form_count": 1,
+  "visited": true,
+  "note": ""
+}

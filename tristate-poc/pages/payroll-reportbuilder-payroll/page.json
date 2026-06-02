@@ -1,0 +1,85 @@
+{
+  "folder": "payroll-reportbuilder-payroll",
+  "section": "Payroll",
+  "label": "reportbuilder  /  payroll",
+  "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll",
+  "title": "Traumasoft: Transunit",
+  "headings": [
+    "Payroll Reports"
+  ],
+  "buttons": [
+    "Billing",
+    "Human Resources",
+    "Payroll",
+    "Reporting",
+    "TransUnit EMS [AMB-2] (B) All"
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "search_input",
+      "id": "search_input",
+      "placeholder": "Search",
+      "label": ""
+    }
+  ],
+  "links_on_page": [
+    {
+      "text": "Reset Form",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+    },
+    {
+      "text": "user  /  account",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+    },
+    {
+      "text": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+    },
+    {
+      "text": "forms  /  anonymous reports main",
+      "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+    },
+    {
+      "text": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+    },
+    {
+      "text": "reporting  /  calltype groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+    },
+    {
+      "text": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+    },
+    {
+      "text": "reporting  /  kaiser / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+    },
+    {
+      "text": "reporting  /  payor groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+    },
+    {
+      "text": "reporting  /  home",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+    },
+    {
+      "text": "reporting  /  dashboard",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+    },
+    {
+      "text": "reporting  /  config",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+    },
+    {
+      "text": "reportbuilder  /  payroll",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll#"
+    }
+  ],
+  "table_count": 3,
+  "form_count": 1,
+  "visited": true,
+  "note": ""
+}

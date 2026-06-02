@@ -1,0 +1,164 @@
+{
+  "folder": "billing-workflow-main",
+  "section": "Billing",
+  "label": "billing  /  workflow / main",
+  "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main",
+  "title": "Billing Workflow",
+  "headings": [],
+  "buttons": [
+    "Billing",
+    "Human Resources",
+    "Payroll",
+    "Reporting",
+    "Search",
+    "All",
+    "Validate",
+    "Auto Validate",
+    "Unvalidate",
+    "Worked",
+    "View Problems",
+    "Define Filter",
+    "Columns",
+    "Export to CSV"
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "search_input",
+      "id": "search_input",
+      "placeholder": "Search",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "",
+      "id": "app_view_workflowFilter",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "app_view_startDate",
+      "placeholder": "mm/dd/yyyy",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "app_view_endDate",
+      "placeholder": "mm/dd/yyyy",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "",
+      "id": "app_view_FilterType",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "",
+      "id": "app_view_limitTrips",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "number",
+      "name": "",
+      "id": "app_view_limitValue",
+      "placeholder": "1000",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "",
+      "id": "app_view_otherActions",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "",
+      "id": "cb_workflow_grid_Grid",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "label": "Page No."
+    }
+  ],
+  "links_on_page": [
+    {
+      "text": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main#"
+    },
+    {
+      "text": "user  /  account",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+    },
+    {
+      "text": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+    },
+    {
+      "text": "forms  /  anonymous reports main",
+      "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+    },
+    {
+      "text": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+    },
+    {
+      "text": "reportbuilder  /  payroll",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+    },
+    {
+      "text": "reporting  /  calltype groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+    },
+    {
+      "text": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+    },
+    {
+      "text": "reporting  /  kaiser / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+    },
+    {
+      "text": "reporting  /  payor groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+    },
+    {
+      "text": "reporting  /  home",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+    },
+    {
+      "text": "reporting  /  dashboard",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+    },
+    {
+      "text": "reporting  /  config",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+    }
+  ],
+  "table_count": 5,
+  "form_count": 0,
+  "visited": true,
+  "note": ""
+}

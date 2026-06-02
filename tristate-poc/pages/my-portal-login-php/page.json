@@ -1,0 +1,15 @@
+{
+  "folder": "my-portal-login-php",
+  "section": "My Portal",
+  "label": "login.php",
+  "url": "https://transunit.traumasoft.com/login.php?action=logout",
+  "title": "",
+  "headings": [],
+  "buttons": [],
+  "inputs": [],
+  "links_on_page": [],
+  "table_count": 0,
+  "form_count": 0,
+  "visited": false,
+  "note": "Logout skipped."
+}

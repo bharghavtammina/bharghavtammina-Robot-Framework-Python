@@ -1,0 +1,418 @@
+{
+  "folder": "00-after-login",
+  "section": "Home",
+  "label": "After login landing",
+  "url": "https://transunit.traumasoft.com/main.php?a=user:account",
+  "title": "My Account",
+  "headings": [],
+  "buttons": [
+    "Billing",
+    "Human Resources",
+    "Payroll",
+    "Reporting"
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "search_input",
+      "id": "search_input",
+      "placeholder": "Search",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "user",
+      "id": "user",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "password",
+      "name": "pass",
+      "id": "pass",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "password",
+      "name": "password2",
+      "id": "password2",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "first_name",
+      "id": "first_name",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "last_name",
+      "id": "last_name",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "country",
+      "id": "country",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "street",
+      "id": "street",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "address2",
+      "id": "address2",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "city",
+      "id": "city",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "state",
+      "id": "state",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "zip",
+      "id": "zip_code",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "ethnicity_id",
+      "id": "ethnicity_id",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "gender",
+      "id": "gender",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "veteran",
+      "id": "veteran",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "user_veteran_status[]",
+      "id": "",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "disability",
+      "id": "disability",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "textarea",
+      "type": "textarea",
+      "name": "disability_accommodation",
+      "id": "",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "fuel_pin",
+      "id": "fuel_pin",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "email_address",
+      "id": "email_address",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "email2",
+      "id": "email2",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "mobile_phone",
+      "id": "mobile_phone",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "mobile_phone_carrier_id",
+      "id": "mobile_phone_carrier_id",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "allow_sms",
+      "id": "allow_sms",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "allow_external_email",
+      "id": "allow_external_email",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "home_phone",
+      "id": "home_phone",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "pager_num",
+      "id": "pager_num",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "office_phone",
+      "id": "office_phone",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "office_phone_ext",
+      "id": "office_phone_ext",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "fax",
+      "id": "fax",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "phonelist_hide",
+      "id": "phonelist_hide",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "allow_push_notifications",
+      "id": "allow_push_notifications",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "emergency_name",
+      "id": "emergency_name",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "emergency_relationship",
+      "id": "emergency_relationship",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "emergency_country",
+      "id": "emergency_country",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "emergency_address",
+      "id": "emergency_address",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "emergency_city",
+      "id": "emergency_city",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "emergency_state",
+      "id": "emergency_state",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "emergency_zipcode",
+      "id": "emergency_zipcode",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "emergency_email",
+      "id": "emergency_email",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "emergency_phone",
+      "id": "emergency_phone",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "select",
+      "type": "select-one",
+      "name": "notify_nextday_schedule",
+      "id": "notify_nextday_schedule",
+      "placeholder": "",
+      "label": ""
+    },
+    {
+      "tag": "input",
+      "type": "submit",
+      "name": "Submit2",
+      "id": "",
+      "placeholder": "",
+      "label": ""
+    }
+  ],
+  "links_on_page": [
+    {
+      "text": "Create / Edit Signature",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account#"
+    },
+    {
+      "text": "user  /  account",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+    },
+    {
+      "text": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+    },
+    {
+      "text": "forms  /  anonymous reports main",
+      "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+    },
+    {
+      "text": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+    },
+    {
+      "text": "reportbuilder  /  payroll",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+    },
+    {
+      "text": "reporting  /  calltype groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+    },
+    {
+      "text": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+    },
+    {
+      "text": "reporting  /  kaiser / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+    },
+    {
+      "text": "reporting  /  payor groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+    },
+    {
+      "text": "reporting  /  home",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+    },
+    {
+      "text": "reporting  /  dashboard",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+    },
+    {
+      "text": "reporting  /  config",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+    }
+  ],
+  "table_count": 7,
+  "form_count": 1,
+  "visited": true,
+  "note": ""
+}

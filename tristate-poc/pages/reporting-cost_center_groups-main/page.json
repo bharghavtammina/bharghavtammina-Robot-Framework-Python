@@ -1,0 +1,82 @@
+{
+  "folder": "reporting-cost_center_groups-main",
+  "section": "Reporting",
+  "label": "reporting  /  cost center groups / main",
+  "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main",
+  "title": "Cost Center Groups (For Reporting)",
+  "headings": [],
+  "buttons": [
+    "Billing",
+    "Human Resources",
+    "Payroll",
+    "Reporting"
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "search_input",
+      "id": "search_input",
+      "placeholder": "Search",
+      "label": ""
+    }
+  ],
+  "links_on_page": [
+    {
+      "text": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main#"
+    },
+    {
+      "text": "user  /  account",
+      "url": "https://transunit.traumasoft.com/main.php?a=user:account"
+    },
+    {
+      "text": "billing  /  workflow / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=billing:workflow/main"
+    },
+    {
+      "text": "forms  /  anonymous reports main",
+      "url": "https://transunit.traumasoft.com/main.php?a=forms:anonymous_reports_main"
+    },
+    {
+      "text": "payroll  /  discrepancy report",
+      "url": "https://transunit.traumasoft.com/main.php?a=payroll:discrepancy_report"
+    },
+    {
+      "text": "reportbuilder  /  payroll",
+      "url": "https://transunit.traumasoft.com/main.php?a=reportbuilder:payroll"
+    },
+    {
+      "text": "reporting  /  calltype groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:calltype_groups/main"
+    },
+    {
+      "text": "reporting  /  cost center groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:cost_center_groups/main"
+    },
+    {
+      "text": "reporting  /  kaiser / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:kaiser/main"
+    },
+    {
+      "text": "reporting  /  payor groups / main",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:payor_groups/main"
+    },
+    {
+      "text": "reporting  /  home",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:home"
+    },
+    {
+      "text": "reporting  /  dashboard",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:dashboard"
+    },
+    {
+      "text": "reporting  /  config",
+      "url": "https://transunit.traumasoft.com/main.php?a=reporting:config"
+    }
+  ],
+  "table_count": 5,
+  "form_count": 0,
+  "visited": true,
+  "note": ""
+}
