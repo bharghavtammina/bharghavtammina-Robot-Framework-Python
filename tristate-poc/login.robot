@@ -14,9 +14,10 @@ Login To Transunit
     Login With Transunit User
     Wait Until Location Is Not    ${BASE_URL}/
     Wait Until Location Is Not    ${BASE_URL}
-    Open All Menus
-    Click Billing Menu Item
-    Click Workflow Menu Item
+    Click Reporting Header Menu
+    Click Reporting Home Menu Item
+    Click Reporting Sidebar Billing
+    Click Aging By Current Payor Report
     Sleep    10s
     Close Automation Browser
 
@@ -33,20 +34,28 @@ Login With Transunit User
     Input Text    css=[data-testid="login-password"]    ${PASSWORD}
     Click Element    css=[data-testid="login-submit"]
 
-Open All Menus
-    [Documentation]    Opens the All Menus navigation panel after login.
-    Wait Until Element Is Visible    css=button[title="All Menus"]
-    Click Element    css=button[title="All Menus"]
-    Wait Until Element Is Visible    xpath=//div[contains(@class,'ts_menu_list_item')][normalize-space()='Billing']
+Click Reporting Header Menu
+    [Documentation]    Opens the Reporting dropdown in the top header navigation.
+    Wait Until Element Is Visible    xpath=//button[contains(@class,'top_menu_button')][normalize-space()='Reporting']
+    Click Element    xpath=//button[contains(@class,'top_menu_button')][normalize-space()='Reporting']
+    Wait Until Element Is Visible    xpath=//div[contains(@class,'v-overlay--active')]//a[contains(@href,'reporting:home')]
 
-Click Billing Menu Item
-    [Documentation]    Clicks Billing in All Menus to open its flyout.
-    Click Element    xpath=//div[contains(@class,'ts_menu_list_item')][normalize-space()='Billing']
-    Wait Until Element Is Visible    xpath=//a[contains(@href,'billing:workflow')]
+Click Reporting Home Menu Item
+    [Documentation]    Clicks Reporting inside the header Reporting dropdown.
+    Click Element    xpath=//div[contains(@class,'v-overlay--active')]//a[contains(@href,'reporting:home')]
+    Wait Until Location Contains    reporting:home
+    Wait Until Element Is Visible    css=#application_Tree_Container_QuickSearch
 
-Click Workflow Menu Item
-    [Documentation]    Clicks Workflow inside the Billing flyout menu.
-    Click Element    xpath=//a[contains(@href,'billing:workflow')]
+Click Reporting Sidebar Billing
+    [Documentation]    Expands the Billing section in the Reporting sidebar tree.
+    Wait Until Element Is Visible    xpath=//span[contains(@class,'reporting_tree_module_header')][normalize-space()='Billing']
+    Click Element    xpath=//span[contains(@class,'reporting_tree_module_header')][normalize-space()='Billing']
+    Wait Until Element Is Visible    xpath=//span[normalize-space()='Aging By Current Payor']
+
+Click Aging By Current Payor Report
+    [Documentation]    Selects the Aging By Current Payor report from the Billing sidebar list.
+    Click Element    xpath=//span[normalize-space()='Aging By Current Payor']
+    Wait Until Element Contains    id=application_Header_CurrentReport    Aging By Current Payor
 
 Close Automation Browser
     [Documentation]    Closes all open browser windows.
