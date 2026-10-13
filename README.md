@@ -13,6 +13,10 @@ A minimal starter for **task automation** with a **local demo website** you cont
 
 API examples live under `tests/examples/api/` (restful-booker.herokuapp.com).
 
+## ISI web application
+
+The ISI Robot Framework project is grouped in [`ISI/`](ISI/). See its [README](ISI/README.md) for requirements, run instructions, and environment configuration.
+
 ## Project layout
 
 ```
@@ -32,6 +36,7 @@ API examples live under `tests/examples/api/` (restful-booker.herokuapp.com).
 ├── scripts/                   # Doc generators
 ├── results/                   # Robot output (gitignored)
 ├── start-site.ps1
+├── ISI/                       # ISI web application test project
 └── run.ps1
 ```
 
