@@ -1,0 +1,7 @@
+[outlook]
+client_id = your-approved-public-client-id
+tenant_id = your-organization-tenant-id
+mailbox = your-work-mailbox@your-organization.example
+otp_sender_contains =
+otp_subject_contains =
+otp_timeout_seconds = 180

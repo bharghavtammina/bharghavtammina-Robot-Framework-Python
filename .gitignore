@@ -20,6 +20,8 @@ report.html
 results/
 geckodriver*.log
 *.log
+/ISI/local_credentials.ini
+/ISI/local_outlook.ini
 
 # IDE/local files
 .vscode/

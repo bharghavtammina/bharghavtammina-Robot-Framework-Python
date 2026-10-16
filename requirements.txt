@@ -1,3 +1,5 @@
 robotframework>=7.0
 robotframework-seleniumlibrary>=6.6.0
 robotframework-requests>=0.9.7
+msal>=1.31.0
+msal-extensions>=1.2.0
